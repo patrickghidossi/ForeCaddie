@@ -1,0 +1,32 @@
+/* User Register Form */
+.user_register  {
+    display:  none;
+}
+ 
+.user_register label  {
+    display:  block;
+    margin-bottom: 5px;
+}
+ 
+.user_register input[type="text"],  .user_register input[type="email"],  .user_register input[type="password"]  {
+    display:  block;
+    width: 90%;
+    padding:  10px;
+    border: 1px solid #DDD;
+    color: #666;
+}
+ 
+.user_register input[type="checkbox"]  {
+    float: left;
+    margin-right: 5px;
+}
+ 
+.user_register input[type="checkbox"]+label  {
+    float: left;
+}
+ 
+.user_register .checkbox  {
+    margin-bottom:  10px;
+    clear:  both;
+    overflow:  hidden;
+}
