@@ -1,0 +1,91 @@
+html, body {
+	margin: 0px;
+	padding: 0px;
+	/*background-color: #3AAF85;*/
+}
+
+.header {
+	z-index: 1;
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	top: 0;
+	margin-top: 0px;
+	margin-left: 0;
+	margin-bottom: 0px;
+	background-color: #3AAF85;
+}
+
+.name {
+	margin-top: 0px;
+	font-family: 'Carter One', cursive;
+	font-weight: 500;
+	color: #FFFFFF;
+	letter-spacing: -1px;
+	padding: 10px;
+}
+
+#first_container {
+	display: flex;
+	margin-top: 60px;
+	margin-bottom: 0px;
+	height: 750px;
+	align-content: center;
+	background-image: url(dunbar_001.jpg);
+	background-repeat:no-repeat;
+	background-size:100%
+}
+
+.main {
+	position: absolute;
+	font-family: 'Bevan', cursive;
+	font-weight: unset;
+	font-size: 90px;
+	letter-spacing: -1px;
+	padding-top: 100px;
+	padding-left: 60px;
+	color: #FFFFFF;
+}
+
+#second_container {
+	background-color: #3AAF85;
+	margin-top: 0px;
+	margin-left: 0px;
+	height: 75px;
+}
+
+.front_button {
+	background-color: #3AAF85;
+	padding: 35px 15px;
+	border: .5px solid #49987F;
+	display: inline-block;
+	color: #FFFFFF;
+	font-size: 24px;
+	font-family: 'Carter One', cursive;
+	height: 30px;
+	width: 33.3333333%;
+	text-align: center;
+	cursor: pointer;
+    float: left;
+}
+
+.front_button:hover {
+	background-color: #49987F;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.third_container {
+	background-color: #3AAF85;
+	border: 1px solid black;
+}
+
+.footer {
+	clear: both;
+	height: 25px;
+	width: 100%;
+	background-color: url("grass_background.jpg");
+	text-align: right;
+	font-family: 'Carter One', cursive;
+	color: #FFFFFF;
+}
+
