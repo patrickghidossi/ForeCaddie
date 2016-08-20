@@ -187,8 +187,9 @@ a.btn_green  {
 /* End Popup Box Style */
 
 .third_container {
-	background-color: #3AAF85;
+	background-color: #FFF;
 	border: 1px solid black;
+	height: 100px;
 }
 
 .footer {
