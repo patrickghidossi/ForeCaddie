@@ -110,18 +110,20 @@ html, body {
 
 #modal_trigger  {
     margin: 100px auto;
-     width: 100px;
-     display: block;
+    width: 100px;
+    display: block;
 }
  
 .btn  {
     padding: 10px 20px;
-     background:  #F4F4F2;
+    background:  #F4F4F2;
+    margin-bottom: 10px;
 }
  
 .btn_green  {
-    background:  #4FFF60;
-     color:  #FFF;
+    background:  ##3AAF85;
+    color: black;
+    margin-bottom: 10px;
 }
  
 .btn:hover  {
@@ -136,10 +138,12 @@ a.btn  {
     color: #666;
     text-align:  center;
     text-decoration:  none;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
  
 a.btn_green  {
-    color:  #FFF;
+    color: black;
 }
  
 .one_half  {
@@ -188,10 +192,12 @@ a.btn_green  {
 }
 
 .footer {
+	margin-top:0px;
+	padding: 15px;
 	bottom: 0;
-	height: 25px;
+	height: 60px;
 	width: 100%;
-	background-color: url("grass_background.jpg");
+	background-image: url("grass_background.jpg");
 	text-align: right;
 	font-family: 'Carter One', cursive;
 	color: #FFFFFF;

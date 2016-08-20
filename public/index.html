@@ -35,14 +35,14 @@
  		<!--Login Form-->
  			<div class="user_login">
     		<form>
-        			<label>Email / Username</label> <input type="text"><br>
-       				 <label>Password</label> <input type="password"><br>
+        			<label>Email / Username</label> <input type="text" id="username"><br>
+       				 <label>Password</label> <input type="password" id="password"><br>
       	   		<div class="action_btns">
            			 <div class="one_half">
-               		 	<a class="btn back_btn" href="#">Back</a>
+               		 	<a class="btn register_btn" href="#">Need to sign up?</a>
            		 	 </div> 
             	 	 <div class="one_half last">
-                	 <a class="btn btn_red" href="#">Login</a>
+                	 <a class="btn btn_green" href="#">Login</a>
             	  	 </div>
        			</div>
    			</form>
@@ -55,7 +55,7 @@
         			<label>Password</label> <input type="password"><br>
 		       		<div class="action_btns">
 		            	<div class="one_half">
-		                	<a class="btn back_btn" href="#">Back</a>
+		                	<a class="btn login_btn" href="#">Already a member?</a>
 		            	</div>
 		            	<div class="one_half last">
 		               		<a class="btn btn_green" href="#">Register</a>
@@ -65,10 +65,11 @@
 			</div>
     	</section>
 		</div>
+		<!--End PopUp Box-->
 		<div class="third_container">
 		</div>
 		<footer class="footer">
-			<p>ForeRight Productions</p>
+			<p>ForeRight! Productions</p>
 		</footer>	
 
 	<script>
@@ -87,25 +88,41 @@
 	$(function() {
 	        // Calling Login Form
 	     $("#login_form").click(function() {
-	                $(".user_login").show();
-	                return false;
+	            $(".user_login").show();
+	            return false;
 	        });
 
 	        // Calling Register Form
 	        $("#register_form").click(function() {
 	             $(".user_register").show();
 	             $(".header_title").text('Register');
-	                return false;
+	             return false;
 	        });
+
+	         // Going between forms
+		    $(".register_btn").click(function () {
+		        $(".user_login").hide();
+		        $(".user_register").show();
+		        $(".header_title").text('Sign up');
+		        return false;
+		    });
+
+		    $(".login_btn").click(function () {
+		    	$(".user_register").hide();
+		    	$(".user_login").show();
+		    	$(".header_title").text("Login");
+		    	return false;
+		    });
 	});
 
 	//Login and Register Server Connections
-	/* function tryToLogin() {
+	function tryToLogin() {
 		console.log('Logging In');
 			$.post('/api/login',
 			{
 				username: $('#username').val(),
 				password: $('#password').val()
+
 			}, function(data) {
 					if (data === "success"){
 						document.location = "./home.html";
@@ -121,6 +138,7 @@
 			{
 				username: $('#username').val(),
 				password: $('#password').val()
+
 			}, function(data) {
 				if (data === "success"){
 					document.location = "./home.html";
@@ -131,10 +149,10 @@
 		}
 
 		$(document).ready(function() {
-			$('#login').click(tryToLogin);
-			$('#register').click(tryToRegister);
+			$('#Login').click(tryToLogin);
+			$('#Register').click(tryToRegister);
 		});
-	*/
+	
 
 	</script>
 </body>
