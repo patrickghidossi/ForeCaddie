@@ -1,7 +1,11 @@
 var express = require("express");
-//var mongoose = require("mongoose");
+var mongoose = require("mongoose");
 var session = require("express-session");
 var bodyParser = require("body-parser");
+
+mongoose.connect("mongodb://localhost");
+
+var UserModel = require("./User")(mongoose);
 
 var app = express();
 
@@ -30,6 +34,11 @@ app.post("/api", function(req, res) {
 });
 
 app.use(express.static("public"));
+
+app.use(function(req, res, next) {
+	res.status(404);
+	res.send("That's O.B.");
+});
 
 app.listen(PORT, function() {
 	console.log("FORE RIGHT on Port " + PORT);

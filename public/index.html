@@ -50,7 +50,7 @@
 		<!--Register Form-->
 			<div class="user_register">
     			<form>
-       				 <label>Full Name</label> <input type="text"><br>
+       				 <label>Username</label> <input type="text"><br>
        				 <label>Email Address</label> <input type="email"><br>
         			<label>Password</label> <input type="password"><br>
 		       		<div class="action_btns">
@@ -116,7 +116,7 @@
 		    });
 	});
 
-	//Login and Register Server Connections
+	//Login and Register Functions
 	function tryToLogin() {
 		console.log('Logging In');
 			$.post('/api/login',
