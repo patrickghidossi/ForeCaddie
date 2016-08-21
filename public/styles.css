@@ -1,7 +1,6 @@
 html, body {
 	margin: 0px;
 	padding: 0px;
-	/*background-color: #3AAF85;*/
 }
 
 .header {
@@ -83,6 +82,11 @@ html, body {
   background-color: #49987F;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+#scroll {
+	text-decoration: none;
+	color: #FFF;
 }
 
 /*Popup Box Style*/
@@ -188,12 +192,28 @@ a.btn_green  {
 
 .third_container {
 	background-color: #FFF;
-	border: 1px solid black;
+	border-top: 1px solid #3AAF85;
 	height: 100px;
+	margin-bottom: 50px;
+}
+
+.description {
+	font-family: 'Bevan', cursive;
+	/*font-family: 'Carter One', cursive;*/
+	font-weight: 500;
+	letter-spacing: -1px;
+	color: #3AAF85;
+	padding-top: 50px;
+	text-align: center;
+}
+
+#about {
+	text-decoration: none;
 }
 
 .footer {
 	margin-top:0px;
+	border-top: 1px solid #3AAF85;
 	padding: 15px;
 	bottom: 0;
 	height: 60px;
