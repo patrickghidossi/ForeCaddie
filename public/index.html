@@ -73,13 +73,14 @@
 			<p class="title">ForeCaddie allows the average golfer to more accurately visualize their game.</p>
 			<p class="subtitle">By tracking detailed stats per hole, players can pinpoint specific opportunities for improvement and progress their play more efficiently. 
 			</p>
-			<h3 class="features">We Track:</h3>
+			<h3 class="features">ForeCaddie Tracks:</h3>
 			<ul class="features">
 				<li>Fairways Hit - Left, right, or striped?</li>
 				<li>Greens in Regulation - How often are you dancing on schedule?</li>
 				<li>Putts - Too many three-jacks? Now you know. </li>
-				<li>Score - How are all of these inputs affecting your average 9 and 18-hole scores?</li>
+				<li>Score - How are these inputs affecting your average 9 and 18-hole scores?</li>
 			</ul>
+			<p class="title">If you're ready to learn more about your game, join the club and start golfing informed.</p>
 		</div>
 		<footer class="footer">
 			<p>ForeRight! Productions</p>
@@ -111,7 +112,7 @@
 	             return false;
 	        });
 
-	         // Going between forms
+	         // Toggling between forms
 		    $(".register_btn").click(function () {
 		        $(".user_login").hide();
 		        $(".user_register").show();
@@ -160,10 +161,20 @@
 			});
 		}
 
-		$(document).ready(function() {
-			$('#Login').click(tryToLogin);
-			$('#Register').click(tryToRegister);
-		});
+	//Anchor scroll animation 
+	$(document).on('click', 'a', function(event){
+    	event.preventDefault();
+
+    	$('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    	}, 500);
+	});
+
+	//Login Function Calls
+	$(document).ready(function() {
+		$('#Login').click(tryToLogin);
+		$('#Register').click(tryToRegister);
+	});
 	
 
 	</script>
