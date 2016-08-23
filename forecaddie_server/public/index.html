@@ -42,7 +42,7 @@
                		 	<a class="btn register_btn" href="#">Need to sign up?</a>
            		 	 </div> 
             	 	 <div class="one_half last">
-                	 <a class="btn btn_green" href="#">Login</a>
+                	 <a class="btn btn_green" id="loginbutton" href="#">Login</a>
             	  	 </div>
        			</div>
    			</form>
@@ -50,15 +50,15 @@
 		<!--Register Form-->
 			<div class="user_register">
     			<form>
-       				 <label>Username</label> <input type="text"><br>
+       				 <label>Username</label> <input id="registerusername" type="text"><br>
        				 <label>Email Address</label> <input type="email"><br>
-        			<label>Password</label> <input type="password"><br>
+        			<label>Password</label> <input id="registerpassword" type="password"><br>
 		       		<div class="action_btns">
 		            	<div class="one_half">
 		                	<a class="btn login_btn" href="#">Already a member?</a>
 		            	</div>
 		            	<div class="one_half last">
-		               		<a class="btn btn_green" href="#">Register</a>
+		               		<a class="btn btn_green" href="#" id="registerbutton">Register</a>
 		            	</div>
 		        	</div>
     			</form>
@@ -164,6 +164,9 @@
 	//Anchor scroll animation 
 	$(document).on('click', 'a', function(event){
     	event.preventDefault();
+    	if($.attr(this, 'href') === '#') {
+    		return;
+    	}
 
     	$('html, body').animate({
         scrollTop: $( $.attr(this, 'href') ).offset().top
@@ -172,8 +175,8 @@
 
 	//Login Function Calls
 	$(document).ready(function() {
-		$('#Login').click(tryToLogin);
-		$('#Register').click(tryToRegister);
+		$('#loginbutton').click(tryToLogin);
+		$('#registerbutton').click(tryToRegister);
 	});
 	
 

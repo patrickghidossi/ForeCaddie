@@ -26,12 +26,41 @@ app.use(function(req, res, next) {
 });
 
 app.get("/", function(req, res) {
-	res.sendFile(__dirname + "/index.html");
+	res.sendFile(__dirname + "/public/index.html");
 });
 
 app.post("/api", function(req, res) {
 	res.send("success");
 });
+
+app.post("/api/register", function(req, res) {
+
+	var newUser = new UserModel({
+		username: req.body.username,
+		password: req.body.password
+	});
+
+	newUser.save(function(err){
+		if(err) {
+			res.send("Error registering");
+			console.log(err);
+		} else {
+			res.send("success");
+		}
+	}); 
+});
+
+app.post("/api/login", function(req, res) {
+
+});
+
+app.post('/api/logout', function(req, res){
+		console.log ("Logging out");
+		console.log('username = ' + req.session.user);
+		req.session.user = undefined;
+		res.send("success");
+		console.log('username = ' + req.session.user);
+	});
 
 app.use(express.static("public"));
 

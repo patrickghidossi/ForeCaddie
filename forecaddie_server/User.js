@@ -1,4 +1,5 @@
-var mongoose = require(mongoose);
+
+module.exports = function(mongoose) {
 
 var userSchema = new mongoose.Schema({
 
@@ -9,6 +10,6 @@ var userSchema = new mongoose.Schema({
 });
 
 var UserModel = mongoose.model('User', userSchema);
+return UserModel;
 
-module.exports = mongoose.model('User', userSchema);
-
+};
