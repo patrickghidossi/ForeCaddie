@@ -1,21 +1,23 @@
-var mongoose = require(mongoose);
 
-var ShotSchema = mongoose.Schema ({
-	score: Number,
-	fairway: String,
-	putts: Number,
-	gir: Boolean
-});
+module.exports = function(mongoose) {
 
-var HoleSchema = mongoose.Schema ({
-	par: Number,
-	shots: [ShotSchema]
-});
+	var ShotSchema = mongoose.Schema ({
+		score: Number,
+		fairway: String,
+		putts: Number,
+		gir: Boolean
+	});
 
-var GameSchema = new mongoose.Schema ({
-	holes: [HoleSchema]
-});
+	var HoleSchema = mongoose.Schema ({
+		par: Number,
+		shots: [ShotSchema]
+	});
 
-var GameModel = mongoose.model('Game', GameSchema);
+	var GameSchema = new mongoose.Schema ({
+		holes: [HoleSchema]
+	});
 
-module.exports = mongoose.model('Game', GameSchema);
+	var GameModel = mongoose.model('Game', GameSchema);
+	return GameModel;
+	
+};

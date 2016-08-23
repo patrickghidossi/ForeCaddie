@@ -6,6 +6,7 @@ var bodyParser = require("body-parser");
 mongoose.connect("mongodb://localhost");
 
 var UserModel = require("./User")(mongoose);
+var GameModel = require("./GolfSchema")(mongoose);
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.post("/api", function(req, res) {
 	res.send("success");
 });
 
+//User Login Routes
 app.post("/api/register", function(req, res) {
 
 	var newUser = new UserModel({
@@ -51,8 +53,23 @@ app.post("/api/register", function(req, res) {
 });
 
 app.post("/api/login", function(req, res) {
-
-});
+		UserModel.findOne({
+			username: req.body.username,
+			password: req.body.password
+		}, function(err,data) {
+				if(err) {
+					console.log(err);
+				  	return;
+				}
+		});
+//Figure this out
+	if (username) {
+			req.session.user = req.body.username;
+			res.send("success");
+		} else {
+			res.send("error");
+		}
+}); 
 
 app.post('/api/logout', function(req, res){
 		console.log ("Logging out");
@@ -60,7 +77,7 @@ app.post('/api/logout', function(req, res){
 		req.session.user = undefined;
 		res.send("success");
 		console.log('username = ' + req.session.user);
-	});
+});
 
 app.use(express.static("public"));
 
