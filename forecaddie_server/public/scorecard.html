@@ -37,13 +37,12 @@
 		);
 	}
 
-//Back button functionality   Add api route on server for 'home'
+//Back button functionality  
 	function goBack(){
-		$.post('/api/home',
-			function(data){
-				window.location.href= "home.html";
-			});
-	}
+		window.location.href= "home.html";
+		//Eventually plug in to Mongo to save Scorecard mid-round
+	}	
+
 
 	
 

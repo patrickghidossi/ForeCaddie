@@ -51,8 +51,7 @@
 	<script>
 
 	//Course Selection Dropdown Menu
-	$(function dropDown(){
-
+	$(function dropDown() {
 	    $("ul.dropdown li").hover(function(){    
 	        $(this).addClass("hover");
 	        $('ul:first',this).css('visibility', 'visible');    
@@ -63,15 +62,13 @@
 	    	$("ul.dropdown li ul li:has(ul)").find("a:first").append(" &raquo; ");
 	});
 
+	//Move to card when course is selected
 	function goToCard() {
-		$.post('api/scorecard',
-			function (data){
-				window.location.href = "scorecard.html";
-			});
+		window.location.href = "scorecard.html";
 	}
 
 	//Logout Functionality
-	function logOut(){
+	function logOut() {
 		$.post('/api/logout',
 			function (data){
 			window.location.href = "index.html";

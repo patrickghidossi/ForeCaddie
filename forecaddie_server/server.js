@@ -34,7 +34,7 @@ app.post("/api", function(req, res) {
 	res.send("success");
 });
 
-//User Login Routes
+//User Login Routes/Page Navigation
 app.post("/api/register", function(req, res) {
 
 	var newUser = new UserModel({
