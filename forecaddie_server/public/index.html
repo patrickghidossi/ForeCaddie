@@ -19,6 +19,7 @@
 		</header>
 		<div id="first_container" class="container-fluid">
 			<h1 align="center" class="main">Golf, <br> informed.</h1>
+				<img id="dunbar" src="dunbar_001.jpg"/>
 		</div>
 		<div id ="second_container">
 			<button class="front_button" id="login"  href="#modal">Login</button> 
@@ -149,8 +150,8 @@
 		console.log('Registering');
 			$.post('/api/register',
 			{
-				username: $('#username').val(),
-				password: $('#password').val()
+				username: $('#registerusername').val(),
+				password: $('#registerpassword').val()
 
 			}, function(data) {
 				if (data === "success"){

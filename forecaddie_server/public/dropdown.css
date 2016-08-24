@@ -6,23 +6,28 @@ ul {
 	list-style: none;
 	font-family:'Bevan', cursive;
 	color: #4A4A4A;
+	align-content: center;
+	text-align: center;
 }
-
 
 /* First Level */
 
 ul.dropdown {
 	border-radius: 5px;
+	margin-left: 40%;
+	margin-top: 20px;
 }
 
 ul.dropdown li {
+	text-align: center;
+	align-content: center;
 	float: left;
 	zoom: 1;
 	background: #ccc;
 }
 
 ul.dropdown a:hover {
-	color: #000;
+	color: #CCC;
 }
 
 ul.dropdown a:active {
@@ -38,10 +43,11 @@ ul.dropdown li a {
 
 ul.dropdown li:last-child a {
 	border-right: none;
+	margin-left: 0px;
 }
 
 ul.dropdown li:hover, ul.dropdown li.hover { 
-	background: #F3D673;
+	background: #CCC;
  	color: black;
  	position: relative;
 }
@@ -71,10 +77,11 @@ ul.dropdown ul li {
 /* Third Level */
 
 ul.dropdown ul ul {
-	left: 100%;
+	left: 75%;
 	top: 0;
 }
 
 ul.dropdown li:hover > ul {
 	visibility: visible;
+	margin-left: 0px;
 }

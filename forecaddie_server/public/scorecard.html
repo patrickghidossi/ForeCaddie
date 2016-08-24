@@ -13,7 +13,49 @@
 <body>
 	<header class="header">
 			<h2 class="name">ForeCaddie</h2>
+			<button align="right" id="logoutButton">Logout</button>
+			<button align="right" id="backButton">Back</button>
 	</header>
+	<div id="everythingScore" class="container-fluid">
+		<h1 id="subwelcome">Your Card</h1>
+			<h2 id="basic">Flatirons GC</h2>
+		<div id="scorecard-table">
+
+		</div>
+	</div>
+	<footer class="footer">
+		<p>ForeRight! Productions</p>
+	</footer>
+	<script>
+
+//Logout Functionality
+	function logOut(){
+		$.post('/api/logout',
+			function (data){
+			window.location.href = "index.html";
+			}
+		);
+	}
+
+//Back button functionality   Add api route on server for 'home'
+	function goBack(){
+		$.post('/api/home',
+			function(data){
+				window.location.href= "home.html";
+			});
+	}
+
 	
+
+
+
+
+	$(document).ready(function() {
+		$('#logoutButton').click(logOut);
+		$('#backButton').click(goBack);
+	});
+
+
+	</script>
 </body>
 </html>

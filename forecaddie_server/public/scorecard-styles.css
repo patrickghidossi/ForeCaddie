@@ -2,7 +2,35 @@
 	margin-top: 0px;
 	font-family: 'Carter One', cursive;
 	font-weight: 500;
-	color: #49987F;;
+	color: #49987F;
 	letter-spacing: -1px;
 	padding: 10px;
+}
+
+#backButton {
+	background-color: #FFF;
+	color: #3AAF85;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-family: 'Carter One', cursive;
+	border-radius: 10px;
+	margin-right: 90px;
+	margin-top: 15px;
+	border: .5px solid #3AAF85;
+}
+
+#backButton:hover {
+	background: #CCC;
+}
+
+#everythingScore {
+	margin-top: 60px;
+}
+
+#basic {
+	font-family: 'Carter One', cursive;
+	letter-spacing: -1px;
+	color: #4A4A4A;
+	text-align: center;
 }

@@ -60,15 +60,12 @@ app.post("/api/login", function(req, res) {
 				if(err) {
 					console.log(err);
 				  	return;
+				}else {
+					console.log(data.username, "I'm here");
+						req.session.user = data.username;
+						res.send("success");
 				}
 		});
-//Figure this out
-	if (username) {
-			req.session.user = req.body.username;
-			res.send("success");
-		} else {
-			res.send("error");
-		}
 }); 
 
 app.post('/api/logout', function(req, res){

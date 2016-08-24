@@ -25,18 +25,29 @@ html, body {
 }
 
 #first_container {
-	display: flex;
+	/*display: flex;*/
 	margin-top: 60px;
+	margin-left: -15px;
+	margin-right: -2px;
 	bottom: 0;
-	height: 840px;
+	height: 770px;
 	align-content: center;
-	background-image: url(dunbar_001.jpg);
+	/*background-image: url(dunbar_001.jpg);
 	background-repeat:no-repeat;
-	background-size: 100%;
+	background-size: contain;*/
 }
 
+#dunbar {
+	margin-left: 0px;
+}
+
+/* img {
+    max-width: 100%; 
+    height: auto;
+}
+*/
 .main {
-	position: relative;
+	position: absolute;
 	font-family: 'Bevan', cursive;
 	font-weight: unset;
 	font-size: 90px;
@@ -65,7 +76,7 @@ html, body {
 	font-size: 24px;
 	font-family: 'Carter One', cursive;
 	height: 30px;
-	width: 33.3333333%;
+	width: 33.33333333%;
 	text-align: center;
 	line-height: 24px;
 	cursor: pointer;
@@ -347,7 +358,7 @@ li {
 
 #subwelcome {
 	font-family: 'Bevan', cursive;
-	font-size: 36px;
+	font-size: 44px;
 	color: #4A4A4A;
 	padding-top: 10px;
 	text-align: center;
@@ -363,6 +374,12 @@ li {
 	padding: 20px;
 	text-align: center;
 	align-content: center;
+	margin-bottom: 70px;
+}
+
+#basic {
+	font-family: 'Bevan', cursive;
+	color: #4A4A4A;
 }
 
 /* Media Queries */

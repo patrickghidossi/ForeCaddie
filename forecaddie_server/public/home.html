@@ -26,9 +26,8 @@
 		</div>
 	</div>
 	<div class="middle_container">
-		<h1 class="welcome">Welcome to the Clubhouse!</h1>
 		<div id="stats">	
-			<h2 id="subwelcome">Your Stats</h2>
+			<h1 id="subwelcome">Your Stats</h1>
 		</div>
 	</div>
 	<div id="course_choice">
@@ -54,21 +53,22 @@
 	//Course Selection Dropdown Menu
 	$(function dropDown(){
 
-	    $("ul.dropdown li").hover(function(){
-	    
+	    $("ul.dropdown li").hover(function(){    
 	        $(this).addClass("hover");
-	        $('ul:first',this).css('visibility', 'visible');
-	    
+	        $('ul:first',this).css('visibility', 'visible');    
 	    }, function(){
-	    
 	        $(this).removeClass("hover");
-	        $('ul:first',this).css('visibility', 'hidden');
-	    
+	        $('ul:first',this).css('visibility', 'hidden');	    
 	    });
-	    
-	    $("ul.dropdown li ul li:has(ul)").find("a:first").append(" &raquo; ");
-
+	    	$("ul.dropdown li ul li:has(ul)").find("a:first").append(" &raquo; ");
 	});
+
+	function goToCard() {
+		$.post('api/scorecard',
+			function (data){
+				window.location.href = "scorecard.html";
+			});
+	}
 
 	//Logout Functionality
 	function logOut(){
@@ -81,6 +81,7 @@
 
 	$(document).ready(function() {
 		$('#logoutButton').click(logOut);
+		$('#flatirons').click(goToCard);
 	});
 
 
