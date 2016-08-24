@@ -34,3 +34,16 @@
 	color: #4A4A4A;
 	text-align: center;
 }
+
+#everythingScore {
+	margin-bottom: 25px;
+}
+
+#scorecard {
+	border: 1px solid #3AAF85;
+	margin-top: 15px;
+}
+
+.card {
+	width: 100%;
+}

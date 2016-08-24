@@ -5,9 +5,9 @@
 	<title>ForeCaddie - Scorecard</title>
 	<link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Bevan" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles.css"/>
 	<link rel="stylesheet" href="scorecard-styles.css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -16,16 +16,325 @@
 			<button align="right" id="logoutButton">Logout</button>
 			<button align="right" id="backButton">Back</button>
 	</header>
-	<div id="everythingScore" class="container-fluid">
+	<div id="everythingScore" class="container">
 		<h1 id="subwelcome">Your Card</h1>
 			<h2 id="basic">Flatirons GC</h2>
-		<div id="scorecard-table">
-
+		<div class="container" id="scorecard-table">
+			<table class="table" id="scorecard">
+				<tr>
+					<th>Hole</th>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+					<td>6</td>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+					<th>Out Total</th>
+					<td>10</td>
+					<td>11</td>
+					<td>12</td>
+					<td>13</td>
+					<td>14</td>
+					<td>15</td>
+					<td>16</td>
+					<td>17</td>
+					<td>18</td>
+					<th>In Total</th>
+					<th>Round Total</th>
+				</tr>
+				<tr>
+					<th>Par</th>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+					<td>3</td>
+					<td>4</td>
+					<td>4</td>
+					<td>5</td>
+					<td>3</td>
+					<td>4</td>
+					<th>35</th>
+					<td>4</td>
+					<td>3</td>
+					<td>4</td>
+					<td>4</td>
+					<td>5</td>
+					<td>3</td>
+					<td>4</td>
+					<td>4</td>
+					<td>4</td>
+					<th>35</th>
+					<th>70</th>
+				</tr>
+				<tr>
+					<th>Score</th>
+					<td>
+						<input class="card" id="userScore1"/>
+					</td>
+					<td>
+						<input class="card" id="userScore2"/>
+					</td>
+					<td>
+						<input class="card" id="userScore3"/>
+					</td>
+					<td>
+						<input class="card" id="userScore4"/>
+					</td>
+					<td>
+						<input class="card" id="userScore5"/>
+					</td>
+					<td>
+						<input class="card" id="userScore6"/>
+					</td>
+					<td>
+						<input class="card" id="userScore7"/>
+					</td>
+					<td>
+						<input class="card" id="userScore8"/>
+					</td>
+					<td>
+						<input class="card" id="userScore9"/>
+					</td>
+					<td>
+						<input class="card" id="userOutTotal"/>
+					</td>
+					<td>
+						<input class="card" id="userScore10"/>
+					</td>
+					<td>
+						<input class="card" id="userScore11"/>
+					</td>
+					<td>
+						<input class="card" id="userScore12"/>
+					</td>
+					<td>
+						<input class="card" id="userScore13"/>
+					</td>
+					<td>
+						<input class="card" id="userScore14"/>
+					</td>
+					<td>
+						<input class="card" id="userScore15"/>
+					</td>
+					<td>
+						<input class="card" id="userScore16"/>
+					</td>
+					<td>
+						<input class="card" id="userScore17"/>
+					</td>
+					<td>
+						<input class="card" id="userScore18"/>
+					</td>
+					<td>
+						<input class="card" id="userInTotal"/>
+					</td>
+					<td>
+						<input class="card" id="userRoundTotal"/>
+					</td>
+				</tr>
+				<tr>
+					<th>FIR</th>
+					<td>
+						<input class="card" id="userFir1"/>
+					</td>
+					<td>
+						<input class="card" id="userFir2"/>
+					</td>
+					<td>
+						<input class="card" id="userFir3"/>
+					</td>
+					<td>
+						<input class="card" id="userFir4"/>
+					</td>
+					<td>
+						<input class="card" id="userFir5"/>
+					</td>
+					<td>
+						<input class="card" id="userFir6"/>
+					</td>
+					<td>
+						<input class="card" id="userFir7"/>
+					</td>
+					<td>
+						<input class="card" id="userFir8"/>
+					</td>
+					<td>
+						<input class="card" id="userFir9"/>
+					</td>
+					<td>
+						<input class="card" id="userFirOutTotal"/>
+					</td>
+					<td>
+						<input class="card" id="userFir10"/>
+					</td>
+					<td>
+						<input class="card" id="userFir11"/>
+					</td>
+					<td>
+						<input class="card" id="userFir12"/>
+					</td>
+					<td>
+						<input class="card" id="userFir13"/>
+					</td>
+					<td>
+						<input class="card" id="userFir14"/>
+					</td>
+					<td>
+						<input class="card" id="userFir15"/>
+					</td>
+					<td>
+						<input class="card" id="userFir16"/>
+					</td>
+					<td>
+						<input class="card" id="userFir17"/>
+					</td>
+					<td>
+						<input class="card" id="userFir18"/>
+					</td>
+					<td>
+						<input class="card" id="userFirInTotal"/>
+					</td>
+					<td>
+						<input class="card" id="userFirRoundTotal"/>
+					</td>
+				</tr>
+				<tr>
+					<th>GIR</th>
+					<td>
+						<input class="card" id="userGir1"/>
+					</td>
+					<td>
+						<input class="card" id="userGir2"/>
+					</td>
+					<td>
+						<input class="card" id="userGir3"/>
+					</td>
+					<td>
+						<input class="card" id="userGir4"/>
+					</td>
+					<td>
+						<input class="card" id="userGir5"/>
+					</td>
+					<td>
+						<input class="card" id="userGir6"/>
+					</td>
+					<td>
+						<input class="card" id="userGir7"/>
+					</td>
+					<td>
+						<input class="card" id="userGir8"/>
+					</td>
+					<td>
+						<input class="card" id="userGir9"/>
+					</td>
+					<td>
+						<input class="card" id="userGirInTotal"/>
+					</td>
+					<td>
+						<input class="card" id="userGir10"/>
+					</td>
+					<td>
+						<input class="card" id="userGir11"/>
+					</td>
+					<td>
+						<input class="card" id="userGir12"/>
+					</td>
+					<td>
+						<input class="card" id="userGir13"/>
+					</td>
+					<td>
+						<input class="card" id="userGir14"/>
+					</td>
+					<td>
+						<input class="card" id="userGir15"/>
+					</td>
+					<td>
+						<input class="card" id="userGir16"/>
+					</td>
+					<td>
+						<input class="card" id="userGir17"/>
+					</td>
+					<td>
+						<input class="card" id="userGir18"/>
+					</td>
+					<td>
+						<input class="card" id="userGirOutTotal"/>
+					</td>
+					<td>
+						<input class="card" id="userGirRoundTotal"/>
+					</td>
+				</tr>
+				<tr>
+					<th>Putts</th>
+					<td>
+						<input class="card" id="userPutts1"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts2"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts3"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts4"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts5"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts6"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts7"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts8"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts9"/>
+					</td>
+					<td>
+						<input class="card" id="userPuttsInTotal"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts10"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts11"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts12"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts13"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts14"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts15"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts16"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts17"/>
+					</td>
+					<td>
+						<input class="card" id="userPutts18"/>
+					</td>
+					<td>
+						<input class="card" id="userPuttsOutTotal"/>
+					</td>
+					<td>
+						<input class="card" id="userPuttsRoundTotal"/>
+					</td>
+				</tr>					
 		</div>
 	</div>
-	<footer class="footer">
-		<p>ForeRight! Productions</p>
-	</footer>
 	<script>
 
 //Logout Functionality
@@ -43,8 +352,22 @@
 		//Eventually plug in to Mongo to save Scorecard mid-round
 	}	
 
+//Total User Stats Per Current Round
+	function totalScore(){
 
+	}
 	
+	function totalFairways(){
+		//Only account for center
+	}
+
+	function totalGIR(){
+		//Trues
+	}
+
+	function totalPutts(){
+
+	}
 
 
 
