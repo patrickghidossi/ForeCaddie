@@ -18,7 +18,7 @@
 	</header>
 	<div id="everythingScore" class="container">
 		<h1 id="subwelcome">Your Card</h1>
-			<h2 id="basic">Flatirons GC</h2>
+			<h2 class="basic">Flatirons GC</h2>
 		<div class="container" id="scorecard-table">
 			<table class="table" id="scorecard">
 				<tr>
@@ -75,19 +75,19 @@
 						<input class="card" id="userScore1"/>
 					</td>
 					<td>
-						<input class="card" id="userScore2"/>
+						<input class="card"  id="userScore2"/>
 					</td>
 					<td>
-						<input class="card" id="userScore3"/>
+						<input class="card"  id="userScore3"/>
 					</td>
 					<td>
-						<input class="card" id="userScore4"/>
+						<input class="card"  id="userScore4"/>
 					</td>
 					<td>
 						<input class="card" id="userScore5"/>
 					</td>
 					<td>
-						<input class="card" id="userScore6"/>
+						<input class="card"  id="userScore6"/>
 					</td>
 					<td>
 						<input class="card" id="userScore7"/>
@@ -98,8 +98,7 @@
 					<td>
 						<input class="card" id="userScore9"/>
 					</td>
-					<td>
-						<input class="card" id="userOutTotal"/>
+					<td id="userOutTotal">
 					</td>
 					<td>
 						<input class="card" id="userScore10"/>
@@ -128,11 +127,9 @@
 					<td>
 						<input class="card" id="userScore18"/>
 					</td>
-					<td>
-						<input class="card" id="userInTotal"/>
+					<td id="userInTotal">
 					</td>
-					<td>
-						<input class="card" id="userRoundTotal"/>
+					<td id="userRoundTotal">
 					</td>
 				</tr>
 				<tr>
@@ -164,8 +161,7 @@
 					<td>
 						<input class="card" id="userFir9"/>
 					</td>
-					<td>
-						<input class="card" id="userFirOutTotal"/>
+					<td id="userFirOutTotal"/>
 					</td>
 					<td>
 						<input class="card" id="userFir10"/>
@@ -194,11 +190,9 @@
 					<td>
 						<input class="card" id="userFir18"/>
 					</td>
-					<td>
-						<input class="card" id="userFirInTotal"/>
+					<td id="userFirInTotal"/>
 					</td>
-					<td>
-						<input class="card" id="userFirRoundTotal"/>
+					<td id="userFirRoundTotal"/>
 					</td>
 				</tr>
 				<tr>
@@ -230,8 +224,7 @@
 					<td>
 						<input class="card" id="userGir9"/>
 					</td>
-					<td>
-						<input class="card" id="userGirInTotal"/>
+					<td id="userGirOutTotal"/>
 					</td>
 					<td>
 						<input class="card" id="userGir10"/>
@@ -260,11 +253,9 @@
 					<td>
 						<input class="card" id="userGir18"/>
 					</td>
-					<td>
-						<input class="card" id="userGirOutTotal"/>
+					<td id="userGirInTotal"/>
 					</td>
-					<td>
-						<input class="card" id="userGirRoundTotal"/>
+					<td id="userGirRoundTotal"/>
 					</td>
 				</tr>
 				<tr>
@@ -296,8 +287,7 @@
 					<td>
 						<input class="card" id="userPutts9"/>
 					</td>
-					<td>
-						<input class="card" id="userPuttsInTotal"/>
+					<td id="userPuttsOutTotal"/>
 					</td>
 					<td>
 						<input class="card" id="userPutts10"/>
@@ -326,15 +316,27 @@
 					<td>
 						<input class="card" id="userPutts18"/>
 					</td>
-					<td>
-						<input class="card" id="userPuttsOutTotal"/>
+					<td id="userPuttsInTotal">
 					</td>
-					<td>
-						<input class="card" id="userPuttsRoundTotal"/>
+					<td id="userPuttsRoundTotal"/>
 					</td>
-				</tr>					
+				</tr>
+			</table>					
 		</div>
 	</div>
+	<div id="message"></div>
+	<div id="cardkey" class="container">
+		<h2 class="basic">Scoring Key</h2>
+			<ul class="keystyle">
+				<li class="cardLI">Score = Your score for that hole.</li>
+				<li class="cardLI">FIR = Fairways in Regulation. If you find the fairway enter C (center), otherwise note which side you missed on, L (left) or R (right). </li>
+				<li class="cardLI">GIR = Greens in Regulation. Did you reach the green in 1 shot on a Par 3, 2 shots on a Par 4, or 3 shots on a Par 5? Enter Y or N. </li>
+				<li class="cardLI">Putts = The number of putts you hit on that hole.</li>
+			</ul>
+	</div>
+	<footer class="footer">
+		<p>ForeRight! Productions</p>
+	</footer>	
 	<script>
 
 //Logout Functionality
@@ -349,24 +351,80 @@
 //Back button functionality  
 	function goBack(){
 		window.location.href= "home.html";
-		//Eventually plug in to Mongo to save Scorecard mid-round
+		//Eventually plug in to Mongo to save Scorecard mid-round, add a save function/button separately?
 	}	
 
 //Total User Stats Per Current Round
 	function totalScore(){
+		var userOutNine = [];
+		var userInNine = [];
+		var i;
 
+		for(i = 1; i <= 9; i++) {
+			userOutNine.push($('#userScore' + i).val() || 0);
+		}
+
+		$("#userOutTotal").html(sumNine(userOutNine));
+
+		for(i = 10; i <= 18; i++) {
+			userInNine.push($('#userScore' + i).val() || 0);
+		}
+
+		$("#userInTotal").html(sumNine(userInNine));
+
+		//Sum both 9's to 18
+		var userTotal18 = sumNine(userOutNine) + sumNine(userInNine);
+
+		$("#userRoundTotal").html(userTotal18);
+
+		updateServer(userOutNine, userInNine);
 	}
+
+		//Global sum 9 holes function
+		function sumNine(arr) {
+			var nineTotal = 0;
+			for(var i = 0; i < arr.length; i++){
+				if(isNaN(parseInt(arr[i]))) {
+					$("#message").html("Please enter numerical values only");
+					break;
+				} else { 
+					nineTotal += parseInt(arr[i]);
+				}
+			} return nineTotal;
+		}
+
+		//Global server update function
+		function updateServer(userOutNine, userInNine){
+			$.post('api/scorecard', 
+					{
+						userOutNine: userOutNine,
+						userInNine: userInNine
+					},
+					function(response) {
+						console.log(response);
+					});		
+		}
 	
 	function totalFairways(){
-		//Only account for center
+		//Only account for C (center). display as x/9 and x/18
+	
+
 	}
 
 	function totalGIR(){
-		//Trues
+		//Trues. display as x/9 and x/18
 	}
 
 	function totalPutts(){
+		var userOutPutts = [];
+		var userInPutts = [];
+		var i;
 
+		for(i = 1; i <= 9; i++) {
+			userOutPutts.push($('#userPutts' + i).val() || 0);
+		}
+
+		$('#userPuttsOutTotal').html(sumNine(userOutPutts));
 	}
 
 
@@ -375,6 +433,7 @@
 	$(document).ready(function() {
 		$('#logoutButton').click(logOut);
 		$('#backButton').click(goBack);
+		$('.card').blur(totalScore);
 	});
 
 

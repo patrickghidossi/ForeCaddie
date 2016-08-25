@@ -28,7 +28,7 @@
 	margin-top: 60px;
 }
 
-#basic {
+.basic {
 	font-family: 'Carter One', cursive;
 	letter-spacing: -1px;
 	color: #4A4A4A;
@@ -46,4 +46,30 @@
 
 .card {
 	width: 100%;
+	text-align: center;
+}
+
+#message {
+	font-family: 'Bevan', cursive;
+	font-size: 14px;
+	letter-spacing: -1px;
+	color: #4A4A4A;
+	text-align: center;
+}
+
+#cardkey {
+	text-align: center;
+	margin-bottom: 67px;
+}
+
+.keystyle {
+	font-family:'Bevan', cursive;
+	color: #4A4A4A;
+	text-align: center;
+}
+
+.cardLI {
+	font-size: 16px;
+	text-align: center;
+	padding: 5px;
 }

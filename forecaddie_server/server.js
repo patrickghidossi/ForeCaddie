@@ -76,6 +76,14 @@ app.post('/api/logout', function(req, res){
 		console.log('username = ' + req.session.user);
 });
 
+app.post('api/scorecard', function(req, res){
+	req.body.userOutNine,
+	req.body.userInNine,
+	console.log();
+
+
+});
+
 app.use(express.static("public"));
 
 app.use(function(req, res, next) {
