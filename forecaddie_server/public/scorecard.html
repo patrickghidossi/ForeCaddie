@@ -381,7 +381,7 @@
 	}
 
 		//Global sum 9 holes function
-		function sumNine(arr) {
+		function sumNine(arr){
 			var nineTotal = 0;
 			for(var i = 0; i < arr.length; i++){
 				if(isNaN(parseInt(arr[i]))) {
@@ -392,23 +392,41 @@
 				}
 			} return nineTotal;
 		}
-
-		//Global server update function
-		function updateServer(userOutNine, userInNine){
-			$.post('api/scorecard', 
-					{
-						userOutNine: userOutNine,
-						userInNine: userInNine
-					},
-					function(response) {
-						console.log(response);
-					});		
-		}
 	
 	function totalFairways(){
 		//Only account for C (center). display as x/9 and x/18
-	
+		var userOutFairways = [];   //Saves to database
+		var userInFairways = [];	//Saves to database
+		var outCount = 0;			//To display totals on card to user
+		var inCount = 0;			//To display totals on card to user
+		var i;
+		//Get outward 9 fairway results from user input
+		for(i = 1; i <= 9; i++) {
+			userOutFairways.push($('userFir' + i).val() || "");
+		}	
 
+		//Get inward 9 fairway results
+		for(i = 10; i <= 18; i++){
+			userInFairways.push($('userFir' + i).val() || "" );
+		}
+
+		//Function to loop through and count fairways hit
+		function countFir(arr){
+			for(i = 0; i < arr.length; i++){
+				if( i === "C" || i === "c") {
+					arr = arr + 1;
+				} 
+			} return arr;
+		}
+
+		//Count fairways and display to page
+		$("#userFirOutTotal").html(countFir(userOutFairways) + "/9");
+
+		$("#userFirInTotal").html(countFir(userInFairways) + "/9");
+
+		var totalFairwayCount = countFir(userOutFairways) + countFir(userInFairways);
+
+		$("#userFirRoundTotal").html(totalFairwayCount + "/18");
 	}
 
 	function totalGIR(){
@@ -425,15 +443,40 @@
 		}
 
 		$('#userPuttsOutTotal').html(sumNine(userOutPutts));
+
+		for(i = 10; i <= 18; i++) {
+			userInPutts.push($('#userPutts' + i).val() || 0);
+		}
+
+		$('#userPuttsInTotal').html(sumNine(userInPutts));
+
+		var userTotalPutts18 = sumNine(userOutPutts) + sumNine(userInPutts);
+
+		$("#userPuttsRoundTotal").html(userTotalPutts18);
+
+		updateServer(userOutPutts, userInPutts);
 	}
 
 
+	//Global server update function
+	function updateServer(userOutNine, userInNine){
+		$.post('api/scorecard', 
+				{
+					userOutNine: userOutNine,
+					userInNine: userInNine,
+					userOutPutts: userOutPutts,
+					userInPutts: userInPutts
+				},
+				function(response) {
+					console.log(response);
+				});		
+	}
 
 
 	$(document).ready(function() {
 		$('#logoutButton').click(logOut);
 		$('#backButton').click(goBack);
-		$('.card').blur(totalScore);
+		$('.card').blur(totalScore, totalPutts);
 	});
 
 
