@@ -198,60 +198,60 @@
 				<tr>
 					<th>GIR</th>
 					<td>
-						<input class="card" id="userGir1"/>
+						<input class="card" type="checkbox" id="userGir1"/>
 					</td>
 					<td>
-						<input class="card" id="userGir2"/>
+						<input class="card" type="checkbox" id="userGir2"/>
 					</td>
 					<td>
-						<input class="card" id="userGir3"/>
+						<input class="card" type="checkbox" id="userGir3"/>
 					</td>
 					<td>
-						<input class="card" id="userGir4"/>
+						<input class="card" type="checkbox" id="userGir4"/>
 					</td>
 					<td>
-						<input class="card" id="userGir5"/>
+						<input class="card" type="checkbox" id="userGir5"/>
 					</td>
 					<td>
-						<input class="card" id="userGir6"/>
+						<input class="card" type="checkbox" id="userGir6"/>
 					</td>
 					<td>
-						<input class="card" id="userGir7"/>
+						<input class="card" type="checkbox" id="userGir7"/>
 					</td>
 					<td>
-						<input class="card" id="userGir8"/>
+						<input class="card" type="checkbox" id="userGir8"/>
 					</td>
 					<td>
-						<input class="card" id="userGir9"/>
+						<input class="card" type="checkbox" id="userGir9"/>
 					</td>
 					<td id="userGirOutTotal"/>
 					</td>
 					<td>
-						<input class="card" id="userGir10"/>
+						<input class="card" type="checkbox" id="userGir10"/>
 					</td>
 					<td>
-						<input class="card" id="userGir11"/>
+						<input class="card" type="checkbox" id="userGir11"/>
 					</td>
 					<td>
-						<input class="card" id="userGir12"/>
+						<input class="card" type="checkbox" id="userGir12"/>
 					</td>
 					<td>
-						<input class="card" id="userGir13"/>
+						<input class="card" type="checkbox" id="userGir13"/>
 					</td>
 					<td>
-						<input class="card" id="userGir14"/>
+						<input class="card" type="checkbox" id="userGir14"/>
 					</td>
 					<td>
-						<input class="card" id="userGir15"/>
+						<input class="card" type="checkbox" id="userGir15"/>
 					</td>
 					<td>
-						<input class="card" id="userGir16"/>
+						<input class="card" type="checkbox" id="userGir16"/>
 					</td>
 					<td>
-						<input class="card" id="userGir17"/>
+						<input class="card" type="checkbox" id="userGir17"/>
 					</td>
 					<td>
-						<input class="card" id="userGir18"/>
+						<input class="card" type="checkbox" id="userGir18"/>
 					</td>
 					<td id="userGirInTotal"/>
 					</td>
@@ -394,7 +394,6 @@
 		}
 	
 	function totalFairways(){
-		//Only account for C (center). display as x/9 and x/18
 		var userOutFairways = [];   //Saves to database
 		var userInFairways = [];	//Saves to database
 		var outCount = 0;			//To display totals on card to user
@@ -402,36 +401,78 @@
 		var i;
 		//Get outward 9 fairway results from user input
 		for(i = 1; i <= 9; i++) {
-			userOutFairways.push($('userFir' + i).val() || "");
+			userOutFairways.push($('#userFir' + i).val() || "");
 		}	
 
 		//Get inward 9 fairway results
 		for(i = 10; i <= 18; i++){
-			userInFairways.push($('userFir' + i).val() || "" );
+			userInFairways.push($('#userFir' + i).val() || "" );
 		}
 
 		//Function to loop through and count fairways hit
-		function countFir(arr){
+		function countFir(arr, count){
 			for(i = 0; i < arr.length; i++){
-				if( i === "C" || i === "c") {
-					arr = arr + 1;
+				if( arr[i] === "C" || arr[i] === "c") {
+					count = count + 1;
 				} 
-			} return arr;
-		}
+			} return count;
+		}	
 
 		//Count fairways and display to page
-		$("#userFirOutTotal").html(countFir(userOutFairways) + "/9");
+		$("#userFirOutTotal").html(countFir(userOutFairways, outCount) + "/7");
 
-		$("#userFirInTotal").html(countFir(userInFairways) + "/9");
+		$("#userFirInTotal").html(countFir(userInFairways, inCount) + "/7");
 
-		var totalFairwayCount = countFir(userOutFairways) + countFir(userInFairways);
+		var totalFairwayCount = countFir(userOutFairways, outCount) + countFir(userInFairways, inCount);
 
-		$("#userFirRoundTotal").html(totalFairwayCount + "/18");
+		$("#userFirRoundTotal").html(totalFairwayCount + "/14");
+
+		updateServer(userOutFairways, userInFairways);
 	}
 
-	function totalGIR(){
-		//Trues. display as x/9 and x/18
+	function totalGreens(){
+		var userOutGreens = [];
+		var userInGreens = [];
+		var outGreenCount = 0;
+		var inGreenCount = 0;
+
+		//Get outward girs
+		for(i = 1; i <= 9; i++) {
+			if($('#userGir' + i).is(":checked")){
+			userOutGreens.push($('#userGir' + i).val());
+			}
+		}	
+				console.log(userOutGreens);
+		
+		//Get inward girs
+		for(i = 10; i <= 18; i++) {
+			if($('#userGir' + i).is(":checked")){
+			userInGreens.push($('#userGir' + i).val() || "" );
+			}
+		}
+
+		//Function to loop through and count greens hit
+		function countGir(arr, count){
+			for(i = 0; i < arr.length; i++){
+				if( arr[i] === "on" ){
+					count = count + 1;
+				} 
+			} return count;
+		}
+
+
+		//Count greens and display to page
+		$("#userGirOutTotal").html(countGir(userOutGreens, outGreenCount) + "/9");
+
+		$("#userGirInTotal").html(countGir(userInGreens, inGreenCount) + "/9");
+
+		var totalGreensCount = countGir(userOutGreens, outGreenCount) + countGir(userInGreens, inGreenCount);
+
+		$("#userGirRoundTotal").html(totalGreensCount + "/18");
+
+		updateServer(userOutGreens, userInGreens);
 	}
+
 
 	function totalPutts(){
 		var userOutPutts = [];
@@ -454,18 +495,17 @@
 
 		$("#userPuttsRoundTotal").html(userTotalPutts18);
 
-		updateServer(userOutPutts, userInPutts);
+		updateServer(userOutPutts, userInPutts, "putts");
 	}
 
 
 	//Global server update function
-	function updateServer(userOutNine, userInNine){
+	function updateServer(arr1, arr2, type){
 		$.post('api/scorecard', 
 				{
-					userOutNine: userOutNine,
-					userInNine: userInNine,
-					userOutPutts: userOutPutts,
-					userInPutts: userInPutts
+					arr1: arr1,
+					arr2: arr2,
+					type: type
 				},
 				function(response) {
 					console.log(response);
@@ -476,7 +516,10 @@
 	$(document).ready(function() {
 		$('#logoutButton').click(logOut);
 		$('#backButton').click(goBack);
-		$('.card').blur(totalScore, totalPutts);
+		$('.card').blur(totalScore);
+		$('.card').blur(totalFairways);
+		$('.card').focus(totalGreens);
+		$('.card').blur(totalPutts);
 	});
 
 
