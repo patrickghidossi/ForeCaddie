@@ -439,22 +439,26 @@
 		//Get outward girs
 		for(i = 1; i <= 9; i++) {
 			if($('#userGir' + i).is(":checked")){
-			userOutGreens.push($('#userGir' + i).val());
-			}
-		}	
-				console.log(userOutGreens);
+				$('#userGir' + i).val(true);	
+			} else {
+				$('#userGir' + i).val(false);
+			}	userOutGreens.push($('#userGir' + i).val());
+		}
+
 		
 		//Get inward girs
 		for(i = 10; i <= 18; i++) {
 			if($('#userGir' + i).is(":checked")){
-			userInGreens.push($('#userGir' + i).val() || "" );
-			}
+				$('#userGir' + i).val(true);
+			} else {
+				$('#userGir' + i).val(false);
+			}	userOutGreens.push($('#userGir' + i).val());
 		}
 
 		//Function to loop through and count greens hit
 		function countGir(arr, count){
 			for(i = 0; i < arr.length; i++){
-				if( arr[i] === "on" ){
+				if( arr[i] === "true" ){
 					count = count + 1;
 				} 
 			} return count;
@@ -518,7 +522,7 @@
 		$('#backButton').click(goBack);
 		$('.card').blur(totalScore);
 		$('.card').blur(totalFairways);
-		$('.card').focus(totalGreens);
+		$('.card').blur(totalGreens);
 		$('.card').blur(totalPutts);
 	});
 
