@@ -367,7 +367,27 @@ a.btn_green  {
 
 #stats {
 	height: 25%;
-	padding: 25px;
+	padding: 20px;
+}
+
+.centered {
+	width: 50%;
+    margin: 0 auto; 
+    text-align: center;
+}
+
+.avg {
+	display: inline-block;
+	background: #DDD;
+	height: 200px;
+	width: 200px;
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Carter One', cursive;
+	margin-left: 100px;
+	margin-right: 20px;
+	margin-top: 20px;
+	padding: 10px;
 }
 
 #course_choice {
