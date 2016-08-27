@@ -47,7 +47,23 @@ $(document).ready(function(){
 		    {
 		    	quote: "The secret of golf is to turn three shots into two.",
 		    	name: "Bobby Jones"
-		    }
+		    },
+		    {
+				quote: "As you walk down the fairway of life you must smell the roses, for you only get to play one round.",
+				name: "Ben Hogan"
+			},
+			{
+				quote:"Golf is a science, the study of a lifetime, in which you can exhaust yourself but never your subject.",
+				name: "David Forgan"
+			},
+			{
+				quote: "I have found the game to be, in all factualness, a universal language wherever I traveled at home or abroad.",
+				name: "Ben Hogan"
+			},
+			{
+				quote:"The most important shot in golf is the next one.",
+				name: "Ben Hogan"
+			}
 		  ];
 			//Define where quotes go
 			var quote = $('#quoteContainer p').text();
@@ -129,7 +145,23 @@ $(document).ready(function() {
 		    {
 		    	quote: "The secret of golf is to turn three shots into two.",
 		    	name: "Bobby Jones"
-		    }
+		    },
+			{
+				quote: "As you walk down the fairway of life you must smell the roses, for you only get to play one round.",
+				name: "Ben Hogan"
+			},
+			{
+				quote:"Golf is a science, the study of a lifetime, in which you can exhaust yourself but never your subject.",
+				name: "David Forgan"
+			},
+			{
+				quote: "I have found the game to be, in all factualness, a universal language wherever I traveled at home or abroad.",
+				name: "Ben Hogan"
+			},
+			{
+				quote:"The most important shot in golf is the next one.",
+				name: "Ben Hogan"
+			}
 		  ];
 
 		  	$('#quoteButton').click(function(evt){
