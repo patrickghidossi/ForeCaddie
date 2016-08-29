@@ -201,16 +201,16 @@ a.btn_green  {
 /* End Popup Box Style */
 
 .third_container {
-	background-color: #FFF;
+	background-color: #DDD;
 	border-top: 1px solid #3AAF85;
-	height: 510px;
-	margin-bottom: 50px;
-	padding-bottom: 50px;
+	height: 375px;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 .description {
-	font-family: 'Bevan', cursive;
-	/*font-family: 'Carter One', cursive;*/
+	//font-family: 'Bevan', cursive;
+	font-family: 'Carter One', cursive;
 	font-weight: 500;
 	letter-spacing: -1px;
 	color: #4A4A4A;
@@ -223,31 +223,54 @@ a.btn_green  {
 }
 
 .title {
-	font-family: 'Bevan', cursive;
+	font-family: 'Carter One', cursive;
 	font-size: 20px;
 	color: #4A4A4A;
-	padding-top: 10px;
+	padding-top: 25px;
 	text-align: center;
 }
 
 .subtitle {
-	font-family: 'Bevan', cursive;
+	font-family: 'Carter One', cursive;
 	color: #4A4A4A;
 	font-size: 18px;
 	padding-top: 10px;
 	text-align: center;
 }
 
-.features {
-	color: #4A4A4A;
-	font-family: 'Bevan', cursive;
-	padding-top: 20px;
-	padding-left: 150px;
+.fourth_container > * {
+	vertical-align: middle:
 }
 
-.front {
+.features {
+	color: #4A4A4A;
+	font-family: 'Carter One', cursive;
+	padding-top: 20px;
+	text-align: center;
+}
+
+#track {
+	font-family: 'Bevan';
+	display: inline-block;
+	height: 200px;
+	width: 200px;
 	font-size: 16px;
 	padding: 5px;
+	margin-left: 120px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.stat {
+	text-align: center;
+	padding-top:8px;
+}
+
+#bottom {
+	margin-bottom: 30px;
+	padding-top: 20px;
+	margin-top: 15px;
+
 }
 
 .footer {
@@ -284,12 +307,13 @@ a.btn_green  {
 
 #top_container {
 	margin-bottom: 20px;
-	border: solid 3px #DDD;
-	background-color: #DDD;
-	border-radius: 5px;
+	//border: solid 3px #DDD;
+	background-color: white;
+	//border-radius: 5px;
 	padding-bottom: 20px;
 	padding-top: 0px;
-	margin: 100px 20px 10px 20px;
+	//margin: 100px 20px 10px 20px;
+	margin-top: 90px;
 }
 
 #quoteContainer {
@@ -366,20 +390,19 @@ a.btn_green  {
 	text-align: center;
 }
 
-#stats {
-	height: 25%;
-	padding: 20px;
+.middle_container {
+	background-color: #DDD
 }
 
-.centered {
-	width: 50%;
-    margin: 0 auto; 
-    text-align: center;
+#stats {
+	height: 25%;
+	padding-top: 5px;
+	padding-bottom: 30px;
 }
 
 .avg {
 	display: inline-block;
-	background: #DDD;
+	background: white;
 	height: 200px;
 	width: 200px;
 	border-radius: 10px;
@@ -390,6 +413,7 @@ a.btn_green  {
 	margin-right: 20px;
 	margin-top: 20px;
 	padding: 10px;
+	padding-bottom: 30px;
 }
 
 #course_choice {
