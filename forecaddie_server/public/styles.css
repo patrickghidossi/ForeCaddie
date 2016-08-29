@@ -285,6 +285,7 @@ a.btn_green  {
 #top_container {
 	margin-bottom: 20px;
 	border: solid 3px #DDD;
+	background-color: #DDD;
 	border-radius: 5px;
 	padding-bottom: 20px;
 	padding-top: 0px;
@@ -381,6 +382,7 @@ a.btn_green  {
 	background: #DDD;
 	height: 200px;
 	width: 200px;
+	border-radius: 10px;
 	font-size: 30px;
 	text-align: center;
 	font-family: 'Carter One', cursive;

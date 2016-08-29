@@ -56,7 +56,7 @@
 					<td id="par7">5</td>
 					<td id="par8">3</td>
 					<td id="par9">4</td>
-					<th>35</th>
+					<th id="outTotalPar">35</th>
 					<td id="par10">4</td>
 					<td id="par11">3</td>
 					<td id="par12">4</td>
@@ -66,8 +66,8 @@
 					<td id="par16">4</td>
 					<td id="par17">4</td>
 					<td id="par18">4</td>
-					<th>35</th>
-					<th>70</th>
+					<th id="inTotalPar">35</th>
+					<th id="roundTotalPar">70</th>
 				</tr>
 				<tr>
 					<th>Score</th>
@@ -377,7 +377,7 @@
 
 		$("#userRoundTotal").html(userTotal18);
 
-		updateServer(userOutNine, userInNine);
+		updateServer(userOutNine, userInNine, "score");
 	}
 
 		//Global sum 9 holes function
@@ -427,7 +427,7 @@
 
 		$("#userFirRoundTotal").html(totalFairwayCount + "/14");
 
-		updateServer(userOutFairways, userInFairways);
+		updateServer(userOutFairways, userInFairways, "fairway");
 	}
 
 	function totalGreens(){
@@ -474,7 +474,7 @@
 
 		$("#userGirRoundTotal").html(totalGreensCount + "/18");
 
-		updateServer(userOutGreens, userInGreens);
+		updateServer(userOutGreens, userInGreens, "green");
 	}
 
 
@@ -499,7 +499,30 @@
 
 		$("#userPuttsRoundTotal").html(userTotalPutts18);
 
-		updateServer(userOutPutts, userInPutts, "putts");
+		updateServer(userOutPutts, userInPutts, "putt");
+	}
+
+	function par(){
+		//Get the par for each hole and 9
+		var outPar = [];
+		var inPar = [];
+		var i;
+
+		for(i = 1; i <= 9; i++) {
+			outPar.push($('#par' + i).val());
+		}	
+
+		var outParTotal = $('#outTotalPar');
+
+		for(i = 10; i <=18; i++){
+			inPar.push($('#par' + i).val());
+		}
+
+		var inParTotal = $('#inTotalPar');
+
+		//Send info to the server/db
+		updateServer(outPar, inPar, "par");
+
 	}
 
 

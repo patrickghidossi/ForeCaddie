@@ -60,7 +60,7 @@ app.post("/api/login", function(req, res) {
 				if(err) {
 					console.log(err);
 				  	return;
-				}else {
+				} else {
 					console.log(data.username, "I'm here");
 						req.session.user = data.username;
 						res.send("success");
@@ -80,11 +80,34 @@ app.post('api/scorecard', function(req, res){
 	req.body.arr1;
 	req.body.arr2;
 	req.body.type;
-	GameModel.findOneAndUpdate({
 
-	})
+	var newGame = new GameModel.findOneAndUpdate(
+		{ "_id": gameId, "type._id": type._id },
+		{
+			"$set": {
+				"arr1.$": req.body.arr1,
+				"arr2.$": req.body.arr2,
+				"type.$": req.body.type
+			}
+		},
+		function(err, data){
+			if(err) {
+				console.log(err);
+				return;
+			} else {
+				console.log();
+			}
+		}
+	);
 
-
+	newGame.save(function (err) {
+  		if(err) {
+			res.send("error");
+			console.log(err);
+		} else {
+			res.send("success");
+		}
+	}); 
 });
 
 app.use(express.static("public"));
