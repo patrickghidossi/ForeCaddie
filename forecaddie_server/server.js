@@ -80,7 +80,9 @@ app.post('api/scorecard', function(req, res){
 	req.body.arr1;
 	req.body.arr2;
 	req.body.type;
-	console.log();
+	GameModel.findOneAndUpdate({
+
+	})
 
 
 });

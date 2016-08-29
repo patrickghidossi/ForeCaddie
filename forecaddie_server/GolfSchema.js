@@ -4,8 +4,8 @@ module.exports = function(mongoose) {
 	var ShotSchema = mongoose.Schema ({
 		score: Number,
 		fairway: String,
+		gir: Boolean,
 		putts: Number,
-		gir: Boolean
 	});
 
 	var HoleSchema = mongoose.Schema ({
