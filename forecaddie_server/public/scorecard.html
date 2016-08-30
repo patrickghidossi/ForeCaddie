@@ -343,15 +343,28 @@
 	function logOut(){
 		$.post('/api/logout',
 			function (data){
-			window.location.href = "index.html";
+			window.location.href = "/index.html";
 			}
 		);
 	}
 
 //Back button functionality  
 	function goBack(){
-		window.location.href= "home.html";
-		//Eventually plug in to Mongo to save Scorecard mid-round, add a save function/button separately?
+		window.location.href= "/home.html";
+	}	
+
+
+//Global sum 9 holes function
+	function sumNine(arr){
+		var nineTotal = 0;
+		for(var i = 0; i < arr.length; i++){
+			if(isNaN(parseInt(arr[i]))) {
+				$("#message").html("Please enter numerical values only");
+				break;
+			} else { 
+				nineTotal += parseInt(arr[i]);
+			}
+		} return nineTotal;
 	}	
 
 //Total User Stats Per Current Round
@@ -377,21 +390,21 @@
 
 		$("#userRoundTotal").html(userTotal18);
 
-		updateServer(userOutNine, userInNine, "score");
+		function updateScore(arr1, arr2, type){
+		$.post('/api/score', 
+				{
+					arr1: arr1,
+					arr2: arr2,
+					type: type,
+					gameId: getGameId()
+				},
+				function(response) {
+					console.log(response);
+				});		
 	}
 
-		//Global sum 9 holes function
-		function sumNine(arr){
-			var nineTotal = 0;
-			for(var i = 0; i < arr.length; i++){
-				if(isNaN(parseInt(arr[i]))) {
-					$("#message").html("Please enter numerical values only");
-					break;
-				} else { 
-					nineTotal += parseInt(arr[i]);
-				}
-			} return nineTotal;
-		}
+		updateScore(userOutNine, userInNine, "score");
+	}
 	
 	function totalFairways(){
 		var userOutFairways = [];   //Saves to database
@@ -427,7 +440,20 @@
 
 		$("#userFirRoundTotal").html(totalFairwayCount + "/14");
 
-		updateServer(userOutFairways, userInFairways, "fairway");
+		function updateFairways(arr1, arr2, type){
+		$.post('/api/fairways', 
+				{
+					arr1: arr1,
+					arr2: arr2,
+					type: type,
+					gameId: getGameId()
+				},
+				function(response) {
+					console.log(response);
+				});		
+		}
+
+		updateFairways(userOutFairways, userInFairways, "fairways");
 	}
 
 	function totalGreens(){
@@ -474,7 +500,20 @@
 
 		$("#userGirRoundTotal").html(totalGreensCount + "/18");
 
-		updateServer(userOutGreens, userInGreens, "green");
+		function updateGreens(arr1, arr2, type){
+		$.post('/api/greens', 
+				{
+					arr1: arr1,
+					arr2: arr2,
+					type: type,
+					gameId: getGameId()
+				},
+				function(response) {
+					console.log(response);
+				});		
+	}
+
+		updateGreens(userOutGreens, userInGreens, "greens");
 	}
 
 
@@ -499,40 +538,8 @@
 
 		$("#userPuttsRoundTotal").html(userTotalPutts18);
 
-		updateServer(userOutPutts, userInPutts, "putt");
-	}
-
-	function par(){
-		//Get the par for each hole and 9
-		var outPar = [];
-		var inPar = [];
-		var i;
-
-		for(i = 1; i <= 9; i++) {
-			outPar.push($('#par' + i).val());
-		}	
-
-		var outParTotal = $('#outTotalPar');
-
-		for(i = 10; i <=18; i++){
-			inPar.push($('#par' + i).val());
-		}
-
-		var inParTotal = $('#inTotalPar');
-
-		//Send info to the server/db
-		updateServer(outPar, inPar, "par");
-
-	}
-
-	function getGameId(){
-		var url = document.location.href;
-		return url.split('/').slice(-1)[0];
-	}
-
-	//Global server update function
-	function updateServer(arr1, arr2, type){
-		$.post('api/scorecard', 
+		function updatePutts(arr1, arr2, type){
+		$.post('/api/putts', 
 				{
 					arr1: arr1,
 					arr2: arr2,
@@ -542,8 +549,15 @@
 				function(response) {
 					console.log(response);
 				});		
+		}
+
+		updatePutts(userOutPutts, userInPutts, "putts");
 	}
 
+	function getGameId(){
+		var url = document.location.href;
+		return url.split('/').slice(-1)[0];
+	}
 
 	$(document).ready(function() {
 		$('#logoutButton').click(logOut);

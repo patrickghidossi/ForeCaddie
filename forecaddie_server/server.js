@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(session({
-	secret: "BigCat",
+	secret: "BigCat", //To add to gitignore, create in another file and export/require it here. 
 	resave: false,
 	saveUninitialized: false
 }));
@@ -82,61 +82,75 @@ app.get('/scorecard/:gameId', function(req,res){
 });
 
 app.post('/api/createGame', function(req, res) {
-		var game = new GameModel({
-			holes: [],
-			course: req.body.course
+		var newGame = new GameModel({
+			course: req.body.course,
+			score: req.body.score,
+			fairways: req.body.fairways,
+			greens: req.body.greens,
+			putts: req.body.putts
 		});
 
-		game.save(function(err, data){
+		newGame.save(function(err, data){
 			res.send(data._id);
 		});
 });
 
-app.post('api/scorecard', function(req, res){
-	var hole = {
-		_id: req.body.id,
-		score: req.body.score,
-		fairway: req.body.fairway,
-		green: req.body.green,
-		putt: Number
-	}
-	//do if type === "score" etc then arr1 == my arrays 
-		GameModel.findOneAndUpdate(
-    		{ _id: gameId, "holes._id": hole._id },
-    		{ 
-		        "$set": {
-		            "holes.$": hole
-		   		 } 
-    		},
-	    	function(err,data) {
-	    		console.log(hole);
-	    	}
-		);
+app.post('/api/score', function(req, res){
 
-		game.save(function(err){
+		GameModel.findOne({
+			arr1: req.body.userOutNine,
+			arr2: req.body.userInNine,
+			type: req.body.score,
+			gameId: req.body.gameId			
+		}, function(err,data) {
+				if(err) {
+					console.log(err);
+				  	return;
+				} else {
+					console.log(data.GameModel, "I'm here");
+						res.send("success");
+				}
+		});
+
+		/* game.save(function(err, data){
 			if(err) {
 				res.send("Error saving game");
 				console.log(err);
 			} else {
 				res.send("success");
 			}
+		}); */
+});
+
+app.post('/api/fairways', function(req,res) {
+
+		GameModel.findOne({
+			arr1: req.body.userOutFairways,
+			arr2: req.body.userInFairways,
+			type: req.body.fairways,
+			gameId: req.body.gameId			
 		});
 });
 
-	/* GameModel.findOne(
-		{_id: req.body.gameId},
-		function(err, game) {
-			for(var i = 0; i < game.holes.length; i++) {
+app.post('/api/greens', function(req,res) {
 
-			}
+		GameModel.findOne({
+			arr1: req.body.userOutGreens,
+			arr2: req.body.userInGreens,
+			type: req.body.greens,
+			gameId: req.body.gameId			
 		});
+});
 
-		game.save(function (err) {
-        if(err) {
-            console.log("error");
-        }
-    });*/
+app.post('/api/putts', function(req,res) {
 
+		GameModel.findOne({
+			arr1: req.body.userOutPutts,
+			arr2: req.body.userInPutts,
+			type: req.body.putts,
+			gameId: req.body.gameId			
+		});
+});
 
 app.use(express.static("public"));
 

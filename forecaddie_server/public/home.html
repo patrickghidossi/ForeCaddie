@@ -77,7 +77,7 @@
 
 	//Move to card when course is selected
 	function goToCard() {
-		$.post('/api/createGame', { course : "Flatirons"}, function(gameId){
+		$.post('/api/createGame', { course : "Flatirons" }, function(gameId){
 			window.location.href= "scorecard/" + gameId;
 		});
 	}

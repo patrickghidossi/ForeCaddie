@@ -4,9 +4,9 @@ module.exports = function(mongoose) {
 	var GameSchema = new mongoose.Schema ({
 		course: String,
 		score: Number,
-		fairway: String,
-		green: Boolean,
-		putt: Number
+		fairways: String,
+		greens: Boolean,
+		putts: Number
 	});
 
 	var GameModel = mongoose.model('Game', GameSchema);

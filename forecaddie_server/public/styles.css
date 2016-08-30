@@ -3,6 +3,11 @@ html, body {
 	padding: 0px;
 }
 
+#everything {
+	//margin-left: -15px;
+	width: 100%;
+}
+
 .header {
 	z-index: 1;
 	position: fixed;
@@ -249,6 +254,11 @@ a.btn_green  {
 	text-align: center;
 }
 
+#icons {
+	text-align: center;
+	align-content: center;
+}
+
 #track {
 	font-family: 'Bevan';
 	display: inline-block;
@@ -256,7 +266,7 @@ a.btn_green  {
 	width: 200px;
 	font-size: 16px;
 	padding: 5px;
-	margin-left: 120px;
+	margin-left: 100px;
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
