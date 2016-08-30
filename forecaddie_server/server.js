@@ -77,39 +77,22 @@ app.post('/api/logout', function(req, res){
 });
 
 app.post('api/scorecard', function(req, res){
-	//req.body.arr1;
-	//req.body.arr2;
-	//req.body.type;
 
-		var toSet;
-
-		if(type === "score") {
-			toSet = {
-				"outNine" : req.body.arr1,
-				"inNine" : req.body.arr2
-			};
-		} else if (type === "fairway") {
-			toSet = {
-				"fir" : req.body.arr1,
-				"" : req.body.arr2
-			};
-		}
-		//use find one and update with for loop
 	GameModel.findOne(
-		{},
-		{
-			"$set": toSet
-			
-		},
-		function(err, data){
-			if(err) {
-				console.log(err);
-				return;
-			} else {
-				console.log();
+		{_id: req.body.gameId},
+		function(err, game) {
+			for(var i = 0; i < game.holes.length; i++) {
+					if( req.body.type === "score"){
+						
+					}
 			}
-		}
-	);
+		});
+
+		game.save(function (err) {
+        if(err) {
+            console.log("error");
+        }
+    });
 });
 
 app.use(express.static("public"));

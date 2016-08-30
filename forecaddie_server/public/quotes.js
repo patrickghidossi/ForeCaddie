@@ -17,10 +17,6 @@ $(document).ready(function(){
 		    	name: "Lee Trevino"
 		    },
 		    {
-		    	quote: "I'm addicted. I'm addicted to golf.",
-		    	name: "Tiger Woods"
-		    },
-		    {
 		    	quote: "The only time my prayers are never answered is on the golf course.",
 		    	name: "Billy Graham"
 		    },
@@ -113,10 +109,6 @@ $(document).ready(function() {
 		    {
 		    	quote: "There is no such thing as natural touch. Touch is something you create by hitting millions of golf balls.",
 		    	name: "Lee Trevino"
-		    },
-		    {
-		    	quote: "I'm addicted. I'm addicted to golf.",
-		    	name: "Tiger Woods"
 		    },
 		    {
 		    	quote: "The only time my prayers are never answered is on the golf course.",

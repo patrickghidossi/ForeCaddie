@@ -1,16 +1,12 @@
 
 module.exports = function(mongoose) {
 
-	var ShotSchema = mongoose.Schema ({
+	var HoleSchema = mongoose.Schema ({
+		par: Number,
 		score: Number,
 		fairway: String,
 		green: Boolean,
-		putt: Number,
-	});
-
-	var HoleSchema = mongoose.Schema ({
-		par: Number,
-		shots: [ShotSchema]
+		putt: Number
 	});
 
 	var GameSchema = new mongoose.Schema ({
