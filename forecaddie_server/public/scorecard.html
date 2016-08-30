@@ -6,8 +6,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Bevan" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="styles.css"/>
-	<link rel="stylesheet" href="scorecard-styles.css"/>
+	<link rel="stylesheet" href="/styles.css"/>
+	<link rel="stylesheet" href="/scorecard-styles.css"/>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -525,6 +525,10 @@
 
 	}
 
+	function getGameId(){
+		var url = document.location.href;
+		return url.split('/').slice(-1)[0];
+	}
 
 	//Global server update function
 	function updateServer(arr1, arr2, type){
@@ -532,7 +536,8 @@
 				{
 					arr1: arr1,
 					arr2: arr2,
-					type: type
+					type: type,
+					gameId: getGameId()
 				},
 				function(response) {
 					console.log(response);

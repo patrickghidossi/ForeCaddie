@@ -26,9 +26,8 @@
 		</div>
 	</div>
 	<div class="middle_container">
-		<div id="stats">
 			<h1 id="subwelcome">Your Stats</h1>
-				<div id="centered">	
+				<div id="stats">
 					<div class="avg" id="userscore">
 						<p>Score</p>
 					</div>
@@ -78,7 +77,9 @@
 
 	//Move to card when course is selected
 	function goToCard() {
-		window.location.href = "scorecard.html";
+		$.post('/api/createGame', { course : "Flatirons"}, function(gameId){
+			window.location.href= "scorecard/" + gameId;
+		});
 	}
 
 	//Update user stats, pull info from server/db

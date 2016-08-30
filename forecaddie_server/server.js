@@ -76,15 +76,58 @@ app.post('/api/logout', function(req, res){
 		console.log('username = ' + req.session.user);
 });
 
-app.post('api/scorecard', function(req, res){
+app.get('/scorecard/:gameId', function(req,res){
+		res.sendFile(__dirname + "/public/scorecard.html");
 
-	GameModel.findOne(
+});
+
+app.post('/api/createGame', function(req, res) {
+		var game = new GameModel({
+			holes: [],
+			course: req.body.course
+		});
+
+		game.save(function(err, data){
+			res.send(data._id);
+		});
+});
+
+app.post('api/scorecard', function(req, res){
+	var hole = {
+		_id: req.body.id,
+		score: req.body.score,
+		fairway: req.body.fairway,
+		green: req.body.green,
+		putt: Number
+	}
+	//do if type === "score" etc then arr1 == my arrays 
+		GameModel.findOneAndUpdate(
+    		{ _id: gameId, "holes._id": hole._id },
+    		{ 
+		        "$set": {
+		            "holes.$": hole
+		   		 } 
+    		},
+	    	function(err,data) {
+	    		console.log(hole);
+	    	}
+		);
+
+		game.save(function(err){
+			if(err) {
+				res.send("Error saving game");
+				console.log(err);
+			} else {
+				res.send("success");
+			}
+		});
+});
+
+	/* GameModel.findOne(
 		{_id: req.body.gameId},
 		function(err, game) {
 			for(var i = 0; i < game.holes.length; i++) {
-					if( req.body.type === "score"){
-						
-					}
+
 			}
 		});
 
@@ -92,8 +135,8 @@ app.post('api/scorecard', function(req, res){
         if(err) {
             console.log("error");
         }
-    });
-});
+    });*/
+
 
 app.use(express.static("public"));
 
