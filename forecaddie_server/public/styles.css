@@ -29,17 +29,25 @@ html, body {
 }
 
 #first_container {
-	/*display: flex;*/
 	margin-top: 60px;
-	margin-left: -15px;
-	margin-right: -2px;
 	bottom: 0;
 	height: 770px;
 	align-content: center;
 	width: 100%;
-	/*background-image: url(dunbar_001.jpg);
+	background-image: url(dunbar_001.jpg);
 	background-repeat:no-repeat;
-	background-size: contain;*/
+}
+
+@media only screen and (min-width: 1800px) {
+	#first_container {
+		background-image: url(dunbar_imac_screen.jpg);
+	}
+}
+
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+	#first_container {
+		background-image: url(dunbar_iphone_screen.jpg)  no-repeat center center fixed;
+	}
 }
 
 #dunbar {
@@ -460,28 +468,14 @@ img.largescreen {
 	display: none;
 }
 
-@media only screen and (min-width: 2400px) {
+@media only screen and (min-width: 1950px) {
 	img {
 		display: none;
 	}
 	img.largescreen {
 		display: inline;
-		margin-left: 0px;
-		margin-top: 0px;
-	}
-}
-
-img.middlescreen {
-	display: none;
-}
-
-@media only screen and (min-width: 1900, max-width: 2399) {
-	img {
-		display: none;
-	}
-	img.middlescreen {
-		display: inline;
-		margin-left: 0px;
+		margin-left: -40px;
+		//margin-right: 50px;
 		margin-top: 0px;
 	}
 }
@@ -490,12 +484,3 @@ img.smallscreen {
 	display: none;
 }
 
-@media only screen and (max-width: 320px) {
-    img {
-    	display: none;
-    }
-    img.smallscreen {
-    	display: inline;
-    	margin-left: 0px;
-    }
-}

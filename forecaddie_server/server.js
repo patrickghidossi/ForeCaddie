@@ -98,10 +98,10 @@ app.post('/api/createGame', function(req, res) {
 app.post('/api/score', function(req, res){
 
 		GameModel.findOne({
+			gameId: req.body.gameId,
 			arr1: req.body.userOutNine,
 			arr2: req.body.userInNine,
-			type: req.body.score,
-			gameId: req.body.gameId			
+			type: req.body.score			
 		}, function(err,data) {
 				if(err) {
 					console.log(err);
@@ -112,7 +112,7 @@ app.post('/api/score', function(req, res){
 				}
 		});
 
-		/* game.save(function(err, data){
+		/* GameModel.save(function(err, data){
 			if(err) {
 				res.send("Error saving game");
 				console.log(err);
