@@ -4,7 +4,6 @@ html, body {
 }
 
 #everything {
-	//margin-left: -15px;
 	width: 100%;
 }
 
@@ -37,6 +36,7 @@ html, body {
 	bottom: 0;
 	height: 770px;
 	align-content: center;
+	width: 100%;
 	/*background-image: url(dunbar_001.jpg);
 	background-repeat:no-repeat;
 	background-size: contain;*/
@@ -46,11 +46,6 @@ html, body {
 	margin-left: 0px;
 }
 
-/* img {
-    max-width: 100%; 
-    height: auto;
-}
-*/
 .main {
 	position: absolute;
 	font-family: 'Bevan', cursive;
@@ -67,6 +62,8 @@ html, body {
 	margin-top: -70px;
 	margin-left: 0px;
 	height: 70px;
+	margin-right: -2px;
+	width: 100%;
 }
 
 .front_button {
@@ -211,6 +208,8 @@ a.btn_green  {
 	height: 375px;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
+	margin-right: -2px;
+	width: 100%;
 }
 
 .description {
@@ -245,6 +244,11 @@ a.btn_green  {
 
 .fourth_container > * {
 	vertical-align: middle:
+}
+
+.fourth_container {
+	margin-right: -2px;
+	width: 100%;
 }
 
 .features {
@@ -288,6 +292,7 @@ a.btn_green  {
 
 .footer {
 	margin-top:0px;
+	margin-right: -2px;
 	border-top: 1px solid #3AAF85;
 	padding: 15px;
 	bottom: 0;
@@ -449,4 +454,48 @@ a.btn_green  {
 	#quoteButton,#addNew{
 		display: block;
 	}
+}
+
+img.largescreen {
+	display: none;
+}
+
+@media only screen and (min-width: 2400px) {
+	img {
+		display: none;
+	}
+	img.largescreen {
+		display: inline;
+		margin-left: 0px;
+		margin-top: 0px;
+	}
+}
+
+img.middlescreen {
+	display: none;
+}
+
+@media only screen and (min-width: 1900, max-width: 2399) {
+	img {
+		display: none;
+	}
+	img.middlescreen {
+		display: inline;
+		margin-left: 0px;
+		margin-top: 0px;
+	}
+}
+
+img.smallscreen {
+	display: none;
+}
+
+@media only screen and (max-width: 320px) {
+    img {
+    	display: none;
+    }
+    img.smallscreen {
+    	display: inline;
+    	margin-left: 0px;
+    }
 }
