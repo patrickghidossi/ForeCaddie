@@ -12,6 +12,8 @@
 	<script src="quotes.js"></script>
 </head>
 <body>
+	<div class="container-fluid">
+	<div class="row">
 	<header class="header">
 		<h2 class="name">ForeCaddie</h2>
 		<button align="right" id="logoutButton">Logout</button>
@@ -40,8 +42,7 @@
 					<div class="avg" id="userputts">
 						<p>Putts</p> 
 					</div>
-				</div>
-		</div>
+				</div>	
 	</div>
 	<div id="course_choice">
 		<h2 id="subwelcome">Track a Round</h2>
@@ -61,6 +62,8 @@
 	<footer class="footer">
 		<p>ForeRight! Productions</p>
 	</footer>
+	</div>
+	</div>
 	<script>
 
 	//Course Selection Dropdown Menu
@@ -82,10 +85,11 @@
 		});
 	}
 
-	//Update user stats, pull info from server/db
-	//Will I need a function for each stat? probably due to routing. 
-	function updateStats(){
-
+	//Update user stats with averages 
+	function updateUserStats(){
+		$.get('/stats', function(data){
+			console.log(data);
+		});
 	}
 
 	//Logout Functionality

@@ -52,6 +52,7 @@ app.post("/api/register", function(req, res) {
 	}); 
 });
 
+//Login
 app.post("/api/login", function(req, res) {
 		UserModel.findOne({
 			username: req.body.username,
@@ -61,13 +62,14 @@ app.post("/api/login", function(req, res) {
 					console.log(err);
 				  	return;
 				} else {
-					console.log(data.username, "I'm here");
-						req.session.user = data.username;
+					console.log(data._id, "I'm here");
+						req.session.user = data;
 						res.send("success");
 				}
 		});
 }); 
 
+//Logout
 app.post('/api/logout', function(req, res){
 		console.log ("Logging out");
 		console.log('username = ' + req.session.user);
@@ -76,80 +78,134 @@ app.post('/api/logout', function(req, res){
 		console.log('username = ' + req.session.user);
 });
 
+//Create Game Id when nevigating to scorecard page 
 app.get('/scorecard/:gameId', function(req,res){
 		res.sendFile(__dirname + "/public/scorecard.html");
 
 });
 
+//Create new game
 app.post('/api/createGame', function(req, res) {
 		var newGame = new GameModel({
 			course: req.body.course,
-			score: req.body.score,
-			fairways: req.body.fairways,
-			greens: req.body.greens,
-			putts: req.body.putts
+			userOutNine: req.body.userOutNine,
+			userInNine: req.body.userInNine,
+			userOutFairways: req.body.userOutFairways,
+			userInFairways: req.body.userInFairways,
+			userOutGreens: req.body.userOutGreens,
+			userInGreens: req.body.userInGreens,
+			userOutPutts: req.body.userOutPutts,
+			userInPutts: req.body.userInPutts,
+			userId: req.session.user._id
 		});
 
 		newGame.save(function(err, data){
+			if(err){
+				console.log(err);
+				res.send("500");
+			}
 			res.send(data._id);
 		});
 });
 
 app.post('/api/score', function(req, res){
-
-		GameModel.findOne({
-			gameId: req.body.gameId,
-			arr1: req.body.userOutNine,
-			arr2: req.body.userInNine,
-			type: req.body.score			
-		}, function(err,data) {
+			console.log(req.body.gameId);
+			console.log(req.body.userOutNine, "THIS IS AN ARRAY");
+		GameModel.findOneAndUpdate({_id: req.body.gameId },
+			{
+				$set: {
+					userOutNine: req.body.userOutNine,
+					userInNine: req.body.userInNine,					
+				}			
+			},
+			{
+				new: true
+			},
+			 function(err,data) {
 				if(err) {
 					console.log(err);
 				  	return;
 				} else {
-					console.log(data.GameModel, "I'm here");
-						res.send("success");
+					console.log(data, "I'm here");
+						res.send(data);
 				}
 		});
-
-		/* GameModel.save(function(err, data){
-			if(err) {
-				res.send("Error saving game");
-				console.log(err);
-			} else {
-				res.send("success");
-			}
-		}); */
 });
 
 app.post('/api/fairways', function(req,res) {
 
-		GameModel.findOne({
-			arr1: req.body.userOutFairways,
-			arr2: req.body.userInFairways,
-			type: req.body.fairways,
-			gameId: req.body.gameId			
+		GameModel.findOneAndUpdate({_id: req.body.gameId },
+			{
+				$set: {
+					userOutFairways: req.body.userOutFairways,
+					userInFairways: req.body.userInFairways,					
+				}			
+			},
+			{
+				new: true
+			},
+			 function(err,data) {
+				if(err) {
+					console.log(err);
+				  	return;
+				} else {
+					console.log(data, "I'm here");
+						res.send(data);
+				}
 		});
 });
 
-app.post('/api/greens', function(req,res) {
+app.post('/api/greens', function(req, res) {
 
-		GameModel.findOne({
-			arr1: req.body.userOutGreens,
-			arr2: req.body.userInGreens,
-			type: req.body.greens,
-			gameId: req.body.gameId			
-		});
+		GameModel.findOneAndUpdate({_id: req.body.gameId },
+			{
+				$set: {
+					userOutGreens: req.body.userOutGreens,
+					userInGreens: req.body.userInGreens,					
+				}			
+			},
+			{
+				new: true
+			},
+			 function(err,data) {
+				if(err) {
+					console.log(err);
+				  	return;
+				} else {
+					console.log(data, "I'm here");
+						res.send(data);
+				}
+		}); 
 });
 
-app.post('/api/putts', function(req,res) {
+app.post('/api/putts', function(req, res) {
 
-		GameModel.findOne({
-			arr1: req.body.userOutPutts,
-			arr2: req.body.userInPutts,
-			type: req.body.putts,
-			gameId: req.body.gameId			
-		});
+		GameModel.findOneAndUpdate({_id: req.body.gameId },
+			{
+				$set: {
+					userOutPutts: req.body.userOutPutts,
+					userInPutts: req.body.userInPutts,					
+				}			
+			},
+			{
+				new: true
+			},
+			 function(err,data) {
+				if(err) {
+					console.log(err);
+				  	return;
+				} else {
+					console.log(data, "I'm here");
+						res.send(data);
+				}
+		}); 
+});
+
+
+app.get('/stats', function(req, res) {
+	GameModel.find({userId : req.session.user._id}, function(err, data){
+		res.send(JSON.stringify(data));
+	});
 });
 
 app.use(express.static("public"));

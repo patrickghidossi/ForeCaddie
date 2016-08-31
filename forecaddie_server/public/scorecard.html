@@ -390,20 +390,22 @@
 
 		$("#userRoundTotal").html(userTotal18);
 
-		function updateScore(arr1, arr2, type){
-		$.post('/api/score', 
-				{
-					arr1: arr1,
-					arr2: arr2,
-					type: type,
-					gameId: getGameId()
-				},
-				function(response) {
-					console.log(response);
-				});		
+		console.log(userOutNine);
+
+
+   		updateScore(userOutNine, userInNine);
 	}
 
-		updateScore(userOutNine, userInNine, "score");
+		function updateScore(userOutNine, userInNine){
+			$.post('/api/score', 
+					{
+						userOutNine: JSON.stringify(userOutNine),
+						userInNine: JSON.stringify(userInNine),
+						gameId: getGameId()
+					},
+					function(response) {
+						console.log(response);
+					});		
 	}
 	
 	function totalFairways(){
@@ -440,12 +442,11 @@
 
 		$("#userFirRoundTotal").html(totalFairwayCount + "/14");
 
-		function updateFairways(arr1, arr2, type){
+		function updateFairways(userOutFairways, userInFairways){
 		$.post('/api/fairways', 
 				{
-					arr1: arr1,
-					arr2: arr2,
-					type: type,
+					userOutFairways: JSON.stringify(userOutFairways),
+					userInFairways: JSON.stringify(userInFairways),
 					gameId: getGameId()
 				},
 				function(response) {
@@ -453,7 +454,7 @@
 				});		
 		}
 
-		updateFairways(userOutFairways, userInFairways, "fairways");
+		updateFairways(userOutFairways, userInFairways);
 	}
 
 	function totalGreens(){
@@ -500,12 +501,11 @@
 
 		$("#userGirRoundTotal").html(totalGreensCount + "/18");
 
-		function updateGreens(arr1, arr2, type){
+		function updateGreens(userOutGreens, userInGreens){
 		$.post('/api/greens', 
 				{
-					arr1: arr1,
-					arr2: arr2,
-					type: type,
+					userOutGreens: JSON.stringify(userOutGreens),
+					userInGreens: JSON.stringify(userInGreens),
 					gameId: getGameId()
 				},
 				function(response) {
@@ -513,7 +513,7 @@
 				});		
 	}
 
-		updateGreens(userOutGreens, userInGreens, "greens");
+		updateGreens(userOutGreens, userInGreens);
 	}
 
 
@@ -538,12 +538,11 @@
 
 		$("#userPuttsRoundTotal").html(userTotalPutts18);
 
-		function updatePutts(arr1, arr2, type){
+		function updatePutts(userOutPutts, userInPutts){
 		$.post('/api/putts', 
 				{
-					arr1: arr1,
-					arr2: arr2,
-					type: type,
+					userOutPutts: JSON.stringify(userOutPutts),
+					userInPutts : JSON.stringify(userInPutts),
 					gameId: getGameId()
 				},
 				function(response) {
@@ -551,7 +550,7 @@
 				});		
 		}
 
-		updatePutts(userOutPutts, userInPutts, "putts");
+		updatePutts(userOutPutts, userInPutts);
 	}
 
 	function getGameId(){
