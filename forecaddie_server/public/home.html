@@ -109,23 +109,24 @@
 			var greenCount = 0;
 			var puttCount = 0;
 
-			data = data[0];
-
+			for(var d = 0; d <data.length; d++){
+	
 			//Loop through parsed data and push stats into appropriate arrays
-			for(var key in data){
-				if(data.hasOwnProperty(key)){
-					var val = data[key];
-					console.log(key, val);
-					if( key === "userOutNine" || key === "userInNine"){
-						scoreStat.push(val);
-					} else if( key === "userOutFairways" || key === "userInFairways") {
-						fairwayStat.push(val);
-					} else if (key === "userOutGreens" || key === "userInGreens") {
-						greenStat.push(val);
-					} else if ( key === "userOutPutts" || key === "userInPutts") {
-						puttStat.push(val);
-					}
-				} 
+				for(var key in data[d]){
+					if(data[d].hasOwnProperty(key)){
+						var val = data[d][key];
+						console.log(key, val);
+						if( key === "userOutNine" || key === "userInNine"){
+							scoreStat.push(val);
+						} else if( key === "userOutFairways" || key === "userInFairways") {
+							fairwayStat.push(val);
+						} else if (key === "userOutGreens" || key === "userInGreens") {
+							greenStat.push(val);
+						} else if ( key === "userOutPutts" || key === "userInPutts") {
+							puttStat.push(val);
+						}
+					} 
+				}
 			}
 
 	//Calculate array totals, display to page
@@ -198,7 +199,7 @@
 
 			//Display putt average to page
 			function puttAvg(){
-				var average = puttCount / 1;  //Eventually needs to be divided by number of games
+				var average = puttCount / 1;   //Eventually needs to be divided by number of games
 				average = Math.floor(average);
 				return average;
 			}
