@@ -133,17 +133,15 @@
 			//Average Score per 18
 			for(var i = 0; i <scoreStat.length; i++) {
 				var parsedScore = JSON.parse(scoreStat[i]);
-				console.log(parsedScore);
 				for(var j = 0; j < parsedScore.length; j++){
 					scoreCount = scoreCount + parseInt(parsedScore[j]);
-					console.log(scoreCount);
 				}
 			}
 
 			//Display score average to page
 			function scoreAvg(){
 				var average = scoreCount / 1;  //Eventually needs to be divided by number of games
-				Math.floor(average);
+				average = Math.floor(average);
 				return average;
 			}
 
@@ -161,10 +159,12 @@
 
 			//Display fairway average to page
 			function fairwayAvg(){
+				console.log(fairwayCount);
 				var average = (fairwayCount / 14) * 100;  
-				Math.floor(average);
+				average = Math.round(average);
 				return average;
 			}
+
 			$('#userfir').html(fairwayAvg() + "%");
 
 	//GREENS
@@ -181,7 +181,7 @@
 			//Display green average to page
 			function greenAvg(){
 				var average = (greenCount / 18) * 100; 
-				Math.floor(average);
+				average = Math.floor(average);
 				return average;
 			}
 
@@ -199,7 +199,7 @@
 			//Display putt average to page
 			function puttAvg(){
 				var average = puttCount / 1;  //Eventually needs to be divided by number of games
-				Math.floor(average);
+				average = Math.floor(average);
 				return average;
 			}
 
