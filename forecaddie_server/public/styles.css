@@ -430,6 +430,11 @@ a.btn_green  {
 	padding-bottom: 30px;
 }
 
+#per {
+	font-family: 'Bevan', cursive;
+	color: #4A4A4A;
+}
+
 #updateButton {
 	text-align: center;
 	maring-bottom: 10px;
@@ -453,6 +458,10 @@ a.btn_green  {
   transform: translateY(4px);
 }
 
+#updateButton:focus {
+	outline:0;
+}
+
 .avg {
 	display: inline-block;
 	background: white;
@@ -467,6 +476,16 @@ a.btn_green  {
 	margin-top: 20px;
 	padding: 10px;
 	padding-bottom: 30px;
+}
+
+.avg > * {
+	vertical-align: middle;
+}
+
+.number {
+	font-family: 'Bevan';
+	font-size: 45px;
+	padding-top: 15px;
 }
 
 #course_choice {

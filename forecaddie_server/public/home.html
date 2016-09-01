@@ -29,18 +29,23 @@
 	</div>
 	<div class="middle_container">
 			<h1 id="subwelcome">Your Stats</h1>
+				<h4 id="per">Per Round</h4>
 				<div id="stats">
-					<div class="avg" id="userscore">
+					<div class="avg">
 						<p>Score</p>
+						<p class="number" id="userscore"></p>
 					</div>
-					<div class="avg" id="userfir">
+					<div class="avg">
 						<p>Fairways</p>
+						<p class="number" id="userfir"></p>
 					</div>
-					<div class="avg" id="usergir">
+					<div class="avg">
 						<p>Greens</p>
+						<p class="number" id="usergir"></p>
 					</div>
-					<div class="avg" id="userputts">
+					<div class="avg">
 						<p>Putts</p> 
+						<p class="number" id="userputts"></p>
 					</div>
 				</div>	
 				<button id="updateButton">Update Stats</button>
@@ -91,14 +96,19 @@
 		$.get('/stats', function(data){
 			
 			data = JSON.parse(data);
-		
+			console.log(data);
 			//Empty arrays to push user stats in to
 			var scoreStat = [];
 			var fairwayStat = [];
 			var greenStat = [];
 			var puttStat = [];
 
-			console.log(data[0]);
+			//Variables to count 
+			var scoreCount = 0;
+			var fairwayCount = 0;
+			var greenCount = 0;
+			var puttCount = 0;
+
 			data = data[0];
 
 			//Loop through parsed data and push stats into appropriate arrays
@@ -118,11 +128,83 @@
 				} 
 			}
 
-			//Calculate array totals, display to page
-			console.log(scoreStat); 
-			console.log(fairwayStat);
-			console.log(greenStat);
-			console.log(puttStat);
+	//Calculate array totals, display to page
+	//SCORE
+			//Average Score per 18
+			for(var i = 0; i <scoreStat.length; i++) {
+				var parsedScore = JSON.parse(scoreStat[i]);
+				console.log(parsedScore);
+				for(var j = 0; j < parsedScore.length; j++){
+					scoreCount = scoreCount + parseInt(parsedScore[j]);
+					console.log(scoreCount);
+				}
+			}
+
+			//Display score average to page
+			function scoreAvg(){
+				var average = scoreCount / 1;  //Eventually needs to be divided by number of games
+				Math.floor(average);
+				return average;
+			}
+
+			$('#userscore').html(scoreAvg());
+
+	//FAIRWAYS
+			//Get number of "C"s, fairways hit
+			for(var f = 0; f <fairwayStat.length; f++){
+				for(var g = 0; g<fairwayStat[f].length; g++){
+					if(fairwayStat[f][g] === "C") {
+					fairwayCount = fairwayCount + 1;
+					}
+				}
+			} 
+
+			//Display fairway average to page
+			function fairwayAvg(){
+				var average = (fairwayCount / 14) * 100;  
+				Math.floor(average);
+				return average;
+			}
+			$('#userfir').html(fairwayAvg() + "%");
+
+	//GREENS
+			//Greens hit, get number of trues
+			for(var k = 0; k < greenStat.length; k++){
+				var parsedGreen = JSON.parse(greenStat[k]);
+				for(var l = 0; l < parsedGreen.length; l++){
+					if(parsedGreen[l] === "true") {
+					greenCount = greenCount + 1;
+					}
+				}
+			} 
+
+			//Display green average to page
+			function greenAvg(){
+				var average = (greenCount / 18) * 100; 
+				Math.floor(average);
+				return average;
+			}
+
+			$('#usergir').html(greenAvg() + "%");
+
+	//PUTTS
+			//Average Putts per 18 
+			for(var m = 0; m < puttStat.length; m++) {
+				var parsedPutt = JSON.parse(puttStat[m]);
+				for(var n = 0; n < parsedPutt.length; n++){
+					puttCount = puttCount + parseInt(parsedPutt[n]);
+				}
+			}
+
+			//Display putt average to page
+			function puttAvg(){
+				var average = puttCount / 1;  //Eventually needs to be divided by number of games
+				Math.floor(average);
+				return average;
+			}
+
+			$('#userputts').html(puttAvg());
+
 		});
 	}
 
