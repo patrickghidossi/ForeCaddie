@@ -109,8 +109,7 @@
 			var greenCount = 0;
 			var puttCount = 0;
 
-			for(var d = 0; d <data.length; d++){
-	
+			for(var d = 0; d <data.length; d++){	
 			//Loop through parsed data and push stats into appropriate arrays
 				for(var key in data[d]){
 					if(data[d].hasOwnProperty(key)){
@@ -138,10 +137,11 @@
 					scoreCount = scoreCount + parseInt(parsedScore[j]);
 				}
 			}
+			console.log(scoreCount);
 
 			//Display score average to page
 			function scoreAvg(){
-				var average = scoreCount / 1;  //Eventually needs to be divided by number of games
+				var average = scoreCount / data.length;  //Eventually needs to be divided by number of games
 				average = Math.floor(average);
 				return average;
 			}
@@ -161,7 +161,7 @@
 			//Display fairway average to page
 			function fairwayAvg(){
 				console.log(fairwayCount);
-				var average = (fairwayCount / 14) * 100;  
+				var average = fairwayCount / (data.length * 14) * 100;  
 				average = Math.round(average);
 				return average;
 			}
@@ -181,7 +181,7 @@
 
 			//Display green average to page
 			function greenAvg(){
-				var average = (greenCount / 18) * 100; 
+				var average = greenCount / (data.length * 18) * 100; 
 				average = Math.floor(average);
 				return average;
 			}
@@ -199,7 +199,7 @@
 
 			//Display putt average to page
 			function puttAvg(){
-				var average = puttCount / 1;   //Eventually needs to be divided by number of games
+				var average = puttCount / data.length;   //Eventually needs to be divided by number of games
 				average = Math.floor(average);
 				return average;
 			}

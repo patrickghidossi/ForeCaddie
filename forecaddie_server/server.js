@@ -42,8 +42,9 @@ app.post("/api/register", function(req, res) {
 		password: req.body.password
 	});
 
-	newUser.save(function(err){
+	newUser.save(function(err, data){
 		if(err) {
+			req.session.user = data;
 			res.send("Error registering");
 			console.log(err);
 		} else {
