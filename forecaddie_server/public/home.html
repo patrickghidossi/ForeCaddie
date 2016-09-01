@@ -24,7 +24,7 @@
 				<p id="quoteGenius"></p>			
 			</div>
 		<div id="buttonContainer">
-				<a href="#" id="quoteButton">(Get another quote)</a>
+				<a href="#" id="quoteButton">Get another quote</a>
 		</div>
 	</div>
 	<div class="middle_container">
@@ -43,6 +43,7 @@
 						<p>Putts</p> 
 					</div>
 				</div>	
+				<button id="updateButton">Update Stats</button>
 	</div>
 	<div id="course_choice">
 		<h2 id="subwelcome">Track a Round</h2>
@@ -88,21 +89,40 @@
 	//Update user stats with averages 
 	function updateUserStats(){
 		$.get('/stats', function(data){
-			console.log(JSON.parse(data));
-			JSON.parse(data);
+			
+			data = JSON.parse(data);
 		
-			//Empty arrays to push user stats in to?
+			//Empty arrays to push user stats in to
 			var scoreStat = [];
 			var fairwayStat = [];
 			var greenStat = [];
 			var puttStat = [];
 
-			/*for(var key in data){
+			console.log(data[0]);
+			data = data[0];
+
+			//Loop through parsed data and push stats into appropriate arrays
+			for(var key in data){
 				if(data.hasOwnProperty(key)){
 					var val = data[key];
-					console.log(val);
-				}
-			} */
+					console.log(key, val);
+					if( key === "userOutNine" || key === "userInNine"){
+						scoreStat.push(val);
+					} else if( key === "userOutFairways" || key === "userInFairways") {
+						fairwayStat.push(val);
+					} else if (key === "userOutGreens" || key === "userInGreens") {
+						greenStat.push(val);
+					} else if ( key === "userOutPutts" || key === "userInPutts") {
+						puttStat.push(val);
+					}
+				} 
+			}
+
+			//Calculate array totals, display to page
+			console.log(scoreStat); 
+			console.log(fairwayStat);
+			console.log(greenStat);
+			console.log(puttStat);
 		});
 	}
 
@@ -118,11 +138,8 @@
 	$(document).ready(function() {
 		$('#logoutButton').click(logOut);
 		$('#flatirons').click(goToCard);
+		$('#updateButton').click(updateUserStats);
 	});
-
-	$(document).ready(function(){
-		$('#userscore').html(updateUserStats());
-	}); 
 
 
 	</script>

@@ -417,7 +417,9 @@ a.btn_green  {
 }
 
 .middle_container {
-	background-color: #DDD
+	background-color: #DDD;
+	text-align: center;
+	padding-bottom: 20px;
 }
 
 #stats {
@@ -426,6 +428,29 @@ a.btn_green  {
 	align-content: center;
 	padding-top: 5px;
 	padding-bottom: 30px;
+}
+
+#updateButton {
+	text-align: center;
+	maring-bottom: 10px;
+	border-radius: 10px;
+	background-color: #3AAF85;
+	border: .5px solid #3AAF85;
+	color: white;
+	font-family: Arial;
+	font-weight: bold;
+	padding:5px;
+}
+
+#updateButton:hover {
+	background-color: #49987F;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#updateButton:active {
+  background-color: #49987F;
+  box-shadow: 0 5px #49987F;
+  transform: translateY(4px);
 }
 
 .avg {
