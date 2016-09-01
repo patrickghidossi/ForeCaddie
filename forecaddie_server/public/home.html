@@ -88,7 +88,21 @@
 	//Update user stats with averages 
 	function updateUserStats(){
 		$.get('/stats', function(data){
-			console.log(data);
+			console.log(JSON.parse(data));
+			JSON.parse(data);
+		
+			//Empty arrays to push user stats in to?
+			var scoreStat = [];
+			var fairwayStat = [];
+			var greenStat = [];
+			var puttStat = [];
+
+			/*for(var key in data){
+				if(data.hasOwnProperty(key)){
+					var val = data[key];
+					console.log(val);
+				}
+			} */
 		});
 	}
 
@@ -105,6 +119,10 @@
 		$('#logoutButton').click(logOut);
 		$('#flatirons').click(goToCard);
 	});
+
+	$(document).ready(function(){
+		$('#userscore').html(updateUserStats());
+	}); 
 
 
 	</script>

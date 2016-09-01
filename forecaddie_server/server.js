@@ -78,7 +78,7 @@ app.post('/api/logout', function(req, res){
 		console.log('username = ' + req.session.user);
 });
 
-//Create Game Id when nevigating to scorecard page 
+//Create Game Id when navigating to scorecard page 
 app.get('/scorecard/:gameId', function(req,res){
 		res.sendFile(__dirname + "/public/scorecard.html");
 
