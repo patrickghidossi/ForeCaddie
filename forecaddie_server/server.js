@@ -10,7 +10,7 @@ var GameModel = require("./GolfSchema")(mongoose);
 
 var app = express();
 
-var PORT = process.env.port || 8000;
+var PORT = process.env.port || 3000;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
