@@ -97,6 +97,7 @@
 			
 			data = JSON.parse(data);
 			console.log(data);
+
 			//Empty arrays to push user stats in to
 			var scoreStat = [];
 			var fairwayStat = [];
@@ -109,8 +110,8 @@
 			var greenCount = 0;
 			var puttCount = 0;
 
-			for(var d = 0; d <data.length; d++){	
 			//Loop through parsed data and push stats into appropriate arrays
+			for(var d = 0; d <data.length; d++){	
 				for(var key in data[d]){
 					if(data[d].hasOwnProperty(key)){
 						var val = data[d][key];
@@ -137,11 +138,10 @@
 					scoreCount = scoreCount + parseInt(parsedScore[j]);
 				}
 			}
-			console.log(scoreCount);
 
 			//Display score average to page
 			function scoreAvg(){
-				var average = scoreCount / data.length;  //Eventually needs to be divided by number of games
+				var average = scoreCount / data.length; 
 				average = Math.floor(average);
 				return average;
 			}
@@ -199,7 +199,7 @@
 
 			//Display putt average to page
 			function puttAvg(){
-				var average = puttCount / data.length;   //Eventually needs to be divided by number of games
+				var average = puttCount / data.length;  
 				average = Math.floor(average);
 				return average;
 			}

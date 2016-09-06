@@ -39,16 +39,17 @@ app.post("/api/register", function(req, res) {
 
 	var newUser = new UserModel({
 		username: req.body.username,
-		password: req.body.password
+		password: req.body.password,
+		email: req.body.email
 	});
 
 	newUser.save(function(err, data){
 		if(err) {
-			req.session.user = data;
-			res.send("Error registering");
 			console.log(err);
 		} else {
+			req.session.user = data;
 			res.send("success");
+			console.log(data._id, "I have an ID");
 		}
 	}); 
 });
