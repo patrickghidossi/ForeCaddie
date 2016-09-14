@@ -116,28 +116,30 @@
 	<script>
 
 	//PopUp Box Call
-	$("#login").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
 	$("#register").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+	$("#login").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+	
 
 	//PopUp Box Functionality
-	$("#login", "#register").leanModal({
+	$("#register", "#login").leanModal({
         top: 100,
         overlay: 0.6,
         closeButton: ".modal_close"
 	});
 
 	$(function() {
-	        // Calling Login Form
-	     $("#login_form").click(function() {
-	            $(".user_login").show();
-	            return false;
-	        });
 
-	        // Calling Register Form
+			 // Calling Register Form
 	        $("#register_form").click(function() {
 	             $(".user_register").show();
 	             $(".header_title").text('Register');
 	             return false;
+	        });
+
+	        // Calling Login Form
+	     $("#login_form").click(function() {
+	            $(".user_login").show();
+	            return false;
 	        });
 
 	         // Toggling between forms
